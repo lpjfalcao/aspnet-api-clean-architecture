@@ -17,7 +17,7 @@ namespace TaskManager.WebApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> ObterProjetos()
         {
             var dados = await this.appService.GetAll();
 

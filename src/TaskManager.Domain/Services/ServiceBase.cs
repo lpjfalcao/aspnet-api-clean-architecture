@@ -18,9 +18,9 @@ namespace TaskManager.Domain.Services
             this.repository.Add(entity);
         }
 
-        public async Task<T> GetByCondition(Expression<Func<T, bool>> expression)
+        public async Task<IEnumerable<T>> GetListByCondition(Expression<Func<T, bool>> expression)
         {
-            return await this.repository.GetByCondition(expression);
+            return await this.repository.GetListByCondition(expression);
         }
 
         public async Task<IEnumerable<T>> GetAll()

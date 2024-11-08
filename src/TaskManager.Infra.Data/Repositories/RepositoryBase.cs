@@ -19,9 +19,9 @@ namespace TaskManager.Infra.Data.Repositories
             this.context.Set<T>().Add(entity);
         }
 
-        public async Task<T> GetByCondition(Expression<Func<T, bool>> expression)
+        public async Task<IEnumerable<T>> GetListByCondition(Expression<Func<T, bool>> expression)
         {
-            return await this.context.Set<T>().Where(expression).AsNoTracking().FirstOrDefaultAsync();
+            return await this.context.Set<T>().Where(expression).AsNoTracking().ToListAsync();
         }
 
         public async Task<IEnumerable<T>> GetAll()

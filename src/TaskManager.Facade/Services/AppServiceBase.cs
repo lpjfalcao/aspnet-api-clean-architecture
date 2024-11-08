@@ -29,11 +29,11 @@ namespace TaskManager.Application.Services
             return this.mapper.Map<IEnumerable<TDto>>(model);
         }
 
-        public async Task<TDto> GetByCondition(Expression<Func<TEntity, bool>> expression)
+        public async Task<IEnumerable<TDto>> GetListByCondition(Expression<Func<TEntity, bool>> expression)
         {
-            var model = await this.service.GetByCondition(expression);
+            var model = await this.service.GetListByCondition(expression);
 
-            return this.mapper.Map<TDto>(model);
+            return this.mapper.Map<IEnumerable<TDto>>(model);
         }
 
         public void Remove(TDto dto)

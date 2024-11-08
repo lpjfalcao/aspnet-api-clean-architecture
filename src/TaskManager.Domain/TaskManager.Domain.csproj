@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Factories\**" />
+    <Compile Remove="ValueObjects\**" />
+    <EmbeddedResource Remove="Factories\**" />
+    <EmbeddedResource Remove="ValueObjects\**" />
+    <None Remove="Factories\**" />
+    <None Remove="ValueObjects\**" />
+  </ItemGroup>
+
+</Project>

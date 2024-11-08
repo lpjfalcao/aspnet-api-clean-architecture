@@ -9,6 +9,7 @@ namespace TaskManager.Infra.Data.DataTransferObjects
 {
     public class ProjetoDto
     {
-        public ICollection<TarefaDto> Tarefas { get; set; }
+        public Guid Id { get; set; }
+        public string Nome { get; set; }
     }
 }

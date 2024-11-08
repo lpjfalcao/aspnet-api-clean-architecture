@@ -9,7 +9,7 @@ namespace TaskManager.Infra.Data.Repositories
     {
         protected RepositoryContext context;
 
-        private RepositoryBase(RepositoryContext context)
+        public RepositoryBase(RepositoryContext context)
         {
             this.context = context;
         }

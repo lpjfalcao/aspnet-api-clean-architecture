@@ -5,7 +5,7 @@ using TaskManager.Infra.Data.DataTransferObjects;
 
 namespace TaskManager.WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/projetos")]
     [ApiController]
     public class ProjetosController : ControllerBase
     {

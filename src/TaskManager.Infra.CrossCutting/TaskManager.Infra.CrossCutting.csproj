@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TaskManager.Facade\TaskManager.Application.csproj" />
     <ProjectReference Include="..\TaskManager.Infra.Data\TaskManager.Infra.Data.csproj" />
   </ItemGroup>
 

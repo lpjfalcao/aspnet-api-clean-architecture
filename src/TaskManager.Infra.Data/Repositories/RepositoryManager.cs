@@ -8,6 +8,7 @@ namespace TaskManager.Infra.Data.Repositories
     public class RepositoryManager : IRepositoryManager
     {
         private ITarefaRepository tarefa;
+        private IProjetoRepository projeto;
 
         private RepositoryContext contexto;
 
@@ -19,6 +20,17 @@ namespace TaskManager.Infra.Data.Repositories
                     return RepositoryFactory.Create(RepositoryTypeEnum.Tarefa, contexto);
 
                 return this.tarefa;
+            }
+        }
+
+        public IProjetoRepository Projeto
+        {
+            get
+            {
+                if (projeto == null)
+                    return RepositoryFactory.Create(RepositoryTypeEnum.Projeto, contexto);
+
+                return this.projeto;
             }
         }
 

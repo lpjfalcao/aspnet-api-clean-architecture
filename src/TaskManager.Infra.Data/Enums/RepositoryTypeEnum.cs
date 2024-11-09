@@ -2,6 +2,7 @@
 {
     public enum RepositoryTypeEnum
     {
-        Tarefa
+        Tarefa,
+        Projeto
     }
 }

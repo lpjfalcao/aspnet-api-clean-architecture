@@ -16,5 +16,10 @@ namespace TaskManager.Infra.Data.Repositories
             tarefa.ProjetoId = projetoId;
             Create(tarefa);
         }
+
+        public async Task<Tarefa> ObterTarefaPorId(Guid projetoId, Guid id, bool trackChanges)
+        {
+            return await GetByCondition(x => x.ProjetoId == projetoId && x.Id == id, trackChanges);
+        }
     }
 }

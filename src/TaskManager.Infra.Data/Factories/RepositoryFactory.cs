@@ -11,6 +11,7 @@ namespace TaskManager.Infra.Data.Factories
             return tipo switch
             {
                 RepositoryTypeEnum.Tarefa => new TarefaRepository(context),
+                RepositoryTypeEnum.Projeto => new ProjetoRepository(context),
                 _=> null
             };
         }

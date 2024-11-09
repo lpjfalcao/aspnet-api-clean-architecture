@@ -14,7 +14,7 @@ namespace TaskManager.Infra.Data.Repositories
             this.context = context;
         }
 
-        public void Add(T entity)
+        public void Create(T entity)
         {
             this.context.Set<T>().Add(entity);
         }

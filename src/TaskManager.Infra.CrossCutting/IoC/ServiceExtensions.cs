@@ -21,11 +21,13 @@ namespace TaskManager.Infra.CrossCutting.IoC
         {
             services.AddScoped(typeof(IAppServiceBase<>), typeof(AppServiceBase<>));
             services.AddScoped(typeof(IServiceBase<>), typeof(ServiceBase<>));
+            services.AddScoped<ITarefaAppService, TarefaAppService>();
         }
 
         public static void ConfigureRepositories(this IServiceCollection services)
         {
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
+            services.AddScoped<IRepositoryManager, RepositoryManager>();
         }
     }
 }

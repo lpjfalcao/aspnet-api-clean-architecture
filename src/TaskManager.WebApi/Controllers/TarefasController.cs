@@ -10,11 +10,13 @@ namespace TaskManager.WebApi.Controllers
     [ApiController]
     public class TarefasController : ControllerBase
     {
-        private IAppServiceBase<Tarefa> appService;
+        private readonly IAppServiceBase<Tarefa> appService;
+        private readonly ITarefaAppService tarefaAppService;
 
-        public TarefasController(IAppServiceBase<Tarefa> appService)
+        public TarefasController(IAppServiceBase<Tarefa> appService, ITarefaAppService tarefaAppService)
         {
-            this.appService = appService;                
+            this.appService = appService;
+            this.tarefaAppService = tarefaAppService;
         }
 
         [HttpGet]
@@ -23,6 +25,23 @@ namespace TaskManager.WebApi.Controllers
             var message = await this.appService.GetListByCondition<TarefaDto>(x => x.ProjetoId == projetoId);
 
             return StatusCode(message.StatusCode, message);
+        }
+
+        [HttpGet("{id}", Name = "ObterTarefasPorId")]
+        public async Task<IActionResult> ObterTarefasPorId(Guid projetoId, Guid id)
+        {
+            var message = await this.appService.GetByCondition<TarefaDto>(x => x.Id == id && x.ProjetoId == projetoId);
+
+            return StatusCode(message.StatusCode, message);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CriarTarefaPorProjeto(Guid projetoId, TarefaCreationDto tarefaDto)
+        {
+            var message = await this.tarefaAppService.CriarTarefa(projetoId, tarefaDto);
+
+            return CreatedAtRoute("ObterTarefasPorId", new { Id = message.Data.Id, ProjetoId = projetoId  }, message.Data);
+
         }
     }   
 }

@@ -9,6 +9,7 @@ namespace TaskManager.Application.MappingProfiles
         public TarefaMappingProfile()
         {
             CreateMap<Tarefa, TarefaDto>();
+            CreateMap<TarefaCreationDto, Tarefa>();
         }
     }
 }

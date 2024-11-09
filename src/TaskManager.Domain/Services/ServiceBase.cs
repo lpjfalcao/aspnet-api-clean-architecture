@@ -15,7 +15,7 @@ namespace TaskManager.Domain.Services
 
         public T Add(T entity)
         {
-            this.repository.Add(entity);
+            this.repository.Create(entity);
 
             return entity;
         }

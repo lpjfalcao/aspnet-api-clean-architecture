@@ -4,7 +4,7 @@ namespace TaskManager.Domain.Interfaces.Repositories
 {
     public interface IRepositoryBase<T> where T : class
     {
-        void Add(T entity);
+        void Create(T entity);
         Task<IEnumerable<T>> GetListByCondition(Expression<Func<T, bool>> expression);
         Task<T> GetByCondition(Expression<Func<T, bool>> expression);
         Task<IEnumerable<T>> GetAll();

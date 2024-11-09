@@ -19,7 +19,7 @@ namespace TaskManager.Infra.CrossCutting.IoC
 
         public static void ConfigureServices(this IServiceCollection services)
         {
-            services.AddScoped(typeof(IAppServiceBase<,>), typeof(AppServiceBase<,>));
+            services.AddScoped(typeof(IAppServiceBase<>), typeof(AppServiceBase<>));
             services.AddScoped(typeof(IServiceBase<>), typeof(ServiceBase<>));
         }
 

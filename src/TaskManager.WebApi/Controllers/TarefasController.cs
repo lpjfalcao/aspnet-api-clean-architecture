@@ -10,9 +10,9 @@ namespace TaskManager.WebApi.Controllers
     [ApiController]
     public class TarefasController : ControllerBase
     {
-        private IAppServiceBase<Tarefa, TarefaDto> appService;
+        private IAppServiceBase<Tarefa> appService;
 
-        public TarefasController(IAppServiceBase<Tarefa, TarefaDto> appService)
+        public TarefasController(IAppServiceBase<Tarefa> appService)
         {
             this.appService = appService;                
         }
@@ -20,7 +20,7 @@ namespace TaskManager.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> ObterTarefasPorProjeto(Guid projetoId)
         {
-            var dados = await this.appService.GetListByCondition(x => x.ProjetoId == projetoId);
+            var dados = await this.appService.GetListByCondition<TarefaDto>(x => x.ProjetoId == projetoId);
 
             return StatusCode(200, dados);
         }

@@ -9,9 +9,9 @@ namespace TaskManager.WebApi.Controllers
     [ApiController]
     public class ProjetosController : ControllerBase
     {
-        private IAppServiceBase<Projeto, ProjetoDto> appService;
+        private IAppServiceBase<Projeto> appService;
 
-        public ProjetosController(IAppServiceBase<Projeto, ProjetoDto> appService)
+        public ProjetosController(IAppServiceBase<Projeto> appService)
         {
             this.appService = appService;
         }
@@ -19,9 +19,25 @@ namespace TaskManager.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> ObterProjetos()
         {
-            var dados = await this.appService.GetAll();
+            var message = await this.appService.GetAll<ProjetoDto>();
 
-            return StatusCode(200, dados);
+            return StatusCode(message.StatusCode, message);
+        }
+
+        [HttpGet("{id}", Name = "ObterProjetosPorId")]
+        public async Task<IActionResult> ObterProjetosPorId(Guid id)
+        {
+            var message = await this.appService.GetByCondition<ProjetoDto>(x => x.Id == id);
+
+            return StatusCode(message.StatusCode, message);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CriarProjeto(ProjetoCreationDto projetoDto)
+        {
+            var message = await this.appService.Add<ProjetoCreationDto>(projetoDto);
+
+            return CreatedAtRoute("ObterProjetosPorId", new { message.Data.Id }, message.Data);
         }
     }
 }

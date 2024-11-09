@@ -13,14 +13,21 @@ namespace TaskManager.Domain.Services
             this.repository = repository;
         }
 
-        public void Add(T entity)
+        public T Add(T entity)
         {
             this.repository.Add(entity);
+
+            return entity;
         }
 
         public async Task<IEnumerable<T>> GetListByCondition(Expression<Func<T, bool>> expression)
         {
             return await this.repository.GetListByCondition(expression);
+        }
+
+        public async Task<T> GetByCondition(Expression<Func<T, bool>> expression)
+        {
+            return await this.repository.GetByCondition(expression);
         }
 
         public async Task<IEnumerable<T>> GetAll()
@@ -36,6 +43,11 @@ namespace TaskManager.Domain.Services
         public void Update(T entity)
         {
             this.repository.Update(entity);
+        }
+
+        public async Task Commit()
+        {
+            await this.repository.Commit();
         }
     }
 }

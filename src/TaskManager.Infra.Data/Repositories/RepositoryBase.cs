@@ -24,6 +24,11 @@ namespace TaskManager.Infra.Data.Repositories
             return await this.context.Set<T>().Where(expression).AsNoTracking().ToListAsync();
         }
 
+        public async Task<T> GetByCondition(Expression<Func<T, bool>> expression)
+        {
+            return await this.context.Set<T>().Where(expression).AsNoTracking().FirstOrDefaultAsync();
+        }
+
         public async Task<IEnumerable<T>> GetAll()
         {
             return await this.context.Set<T>().AsNoTracking().ToListAsync();
@@ -37,6 +42,11 @@ namespace TaskManager.Infra.Data.Repositories
         public void Remove(T entity)
         {
             this.context.Set<T>().Remove(entity);
-        }       
+        }    
+        
+        public async Task Commit()
+        {
+            await this.context.SaveChangesAsync();
+        }
     }
 }

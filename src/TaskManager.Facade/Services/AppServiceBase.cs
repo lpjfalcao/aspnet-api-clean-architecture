@@ -2,10 +2,11 @@
 using TaskManager.Application.Interfaces;
 using TaskManager.Domain.Interfaces.Services;
 using System.Linq.Expressions;
+using TaskManager.Infra.Data.Helpers;
 
 namespace TaskManager.Application.Services
 {
-    public class AppServiceBase<TEntity, TDto> : IAppServiceBase<TEntity, TDto> where TEntity : class where TDto : class
+    public class AppServiceBase<TEntity> : IAppServiceBase<TEntity> where TEntity : class
     {
         private IServiceBase<TEntity> service;
         private IMapper mapper;
@@ -16,38 +17,103 @@ namespace TaskManager.Application.Services
             this.mapper = mapper;
         }
 
-        public void Add(TDto dto)
+        public async Task<MessageHelper<TEntity>> Add<TDto>(TDto dto)
         {
-            var model = this.mapper.Map<TEntity>(dto);
-            this.service.Add(model);
+            var message = new MessageHelper<TEntity>();
+
+            try
+            {
+                var model = this.mapper.Map<TEntity>(dto);
+                
+                var entity = this.service.Add(model);
+
+                await this.service.Commit();
+
+                message.Ok(entity);
+            }
+            catch(Exception ex)
+            {
+                message.Error(ex);
+            }
+
+            return message;
         }
 
-        public async Task<IEnumerable<TDto>> GetAll()
+        public async Task<MessageHelper<IEnumerable<TDto>>> GetAll<TDto>()
         {
-            var model = await this.service.GetAll();
+            var message = new MessageHelper<IEnumerable<TDto>>();
 
-            return this.mapper.Map<IEnumerable<TDto>>(model);
+            try
+            {
+                var dados = this.mapper.Map<IEnumerable<TDto>>(await this.service.GetAll());
+
+                if (!dados.Any())
+                {
+                    message.NotFound("Nenhum dado foi encontrado");
+
+                    return message;
+                }
+
+                message.Ok(dados);                
+                
+            }
+            catch(Exception ex)
+            {
+                message.Error(ex);
+            }
+
+            return message;
         }
 
-        public async Task<IEnumerable<TDto>> GetListByCondition(Expression<Func<TEntity, bool>> expression)
+        public async Task<MessageHelper<TDto>> GetByCondition<TDto>(Expression<Func<TEntity, bool>> expression)
+        {
+            var message = new MessageHelper<TDto>();
+
+            try
+            {
+                var dados = this.mapper.Map<TDto>(await this.service.GetByCondition(expression));
+
+                if (dados == null)
+                {
+                    message.NotFound("Nenhum dado foi encontrado");
+
+                    return message;
+                }
+
+                message.Ok(dados);
+            }
+            catch(Exception ex)
+            {
+                message.Error(ex);
+            }            
+
+            return message;
+        }
+
+        public async Task<IEnumerable<TDto>> GetListByCondition<TDto>(Expression<Func<TEntity, bool>> expression)
         {
             var model = await this.service.GetListByCondition(expression);
 
             return this.mapper.Map<IEnumerable<TDto>>(model);
         }
 
-        public void Remove(TDto dto)
+        public void Remove<TDto>(TDto dto)
         {
             var model = this.mapper.Map<TEntity>(dto);
 
             this.service.Remove(model);
         }
 
-        public void Update(TDto dto)
+        public void Update<TDto>(TDto dto)
         {
             var model = this.mapper.Map<TEntity>(dto);
 
             this.service.Update(model);
+        }
+
+        public async Task Commit()
+        {
+            await this.service.Commit();
         }
     }
 }

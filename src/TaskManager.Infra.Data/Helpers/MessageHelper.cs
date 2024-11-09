@@ -20,7 +20,7 @@ namespace TaskManager.Infra.Data.Helpers
         public void Ok(T data)
         {
             Data = data;
-            Success = Success;
+            Success = true;
             StatusCode = (int)StatusCodeEnum.Ok;
         }
 
@@ -45,6 +45,14 @@ namespace TaskManager.Infra.Data.Helpers
             Message = ex.Message;
             StackTrace = ex.StackTrace;
         }
+
+        public void Created(T data)
+        {
+            Data = data;
+            Success = true;
+            StatusCode = (int)StatusCodeEnum.Created;
+            Message = "Recurso cadastrado com sucesso";
+        }
     }
     public class MessageHelper
     {
@@ -57,7 +65,7 @@ namespace TaskManager.Infra.Data.Helpers
 
         public void Ok()
         {
-            Success = Success;
+            Success = true;
             StatusCode = (int)StatusCodeEnum.Ok;
         }
 

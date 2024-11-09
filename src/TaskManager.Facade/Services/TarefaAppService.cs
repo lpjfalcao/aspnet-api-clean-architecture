@@ -74,5 +74,35 @@ namespace TaskManager.Application.Services
 
             return message;
         }
+
+        public async Task<MessageHelper> RemoverTarefaPorProjeto(Guid projetoId, Guid id)
+        {
+            var message = new MessageHelper();
+
+            try
+            {
+                var projeto = await this.repositoryManager.Projeto.ObterProjetoPorId(projetoId, false);
+
+                if (projeto == null)
+                    throw new Exception("O projeto não foi encontrado");
+
+                var tarefa = await this.repositoryManager.Tarefa.ObterTarefaPorId(projetoId, id, false);
+
+                if (tarefa == null)
+                    throw new Exception("A tarefa não foi encontrada");
+
+                this.repositoryManager.Tarefa.RemoverTarefa(tarefa);
+
+                await this.repositoryManager.Commit();
+
+                message.Ok();
+            }
+            catch (Exception ex)
+            {
+                message.Error(ex);
+            }
+
+            return message;
+        }
     }
 }

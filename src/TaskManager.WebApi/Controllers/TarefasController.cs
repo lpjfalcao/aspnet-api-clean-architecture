@@ -53,5 +53,13 @@ namespace TaskManager.WebApi.Controllers
 
             return StatusCode(message.StatusCode, message);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> RemoverTarefaPorProjeto(Guid projetoId, Guid id)
+        {
+            var message = await this.tarefaAppService.RemoverTarefaPorProjeto(projetoId, id);
+
+            return StatusCode(message.StatusCode, message);
+        }
     }   
 }

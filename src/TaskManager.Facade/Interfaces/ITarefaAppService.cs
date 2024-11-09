@@ -8,5 +8,6 @@ namespace TaskManager.Application.Interfaces
     {
         Task<MessageHelper<TarefaDto>> CriarTarefa(Guid projetoId, TarefaCreationDto tarefaDto);
         Task<MessageHelper> AtualizarCamposTarefa(Guid projetoId, Guid id, JsonPatchDocument<TarefaDto> patchDoc);
+        Task<MessageHelper> RemoverTarefaPorProjeto(Guid projetoId, Guid id);
     }
 }

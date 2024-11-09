@@ -21,5 +21,10 @@ namespace TaskManager.Infra.Data.Repositories
         {
             return await GetByCondition(x => x.ProjetoId == projetoId && x.Id == id, trackChanges);
         }
+
+        public void RemoverTarefa(Tarefa tarefa)
+        {
+            Remove(tarefa);
+        }
     }
 }

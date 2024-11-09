@@ -90,11 +90,29 @@ namespace TaskManager.Application.Services
             return message;
         }
 
-        public async Task<IEnumerable<TDto>> GetListByCondition<TDto>(Expression<Func<TEntity, bool>> expression)
+        public async Task<MessageHelper<IEnumerable<TDto>>> GetListByCondition<TDto>(Expression<Func<TEntity, bool>> expression)
         {
-            var model = await this.service.GetListByCondition(expression);
+            var message = new MessageHelper<IEnumerable<TDto>>();
 
-            return this.mapper.Map<IEnumerable<TDto>>(model);
+            try
+            {
+                var dados = this.mapper.Map<IEnumerable<TDto>>(await this.service.GetListByCondition(expression));
+
+                if (dados == null)
+                {
+                    message.NotFound("Nenhum dado foi encontrado");
+
+                    return message;
+                }
+
+                message.Ok(dados);
+            }
+            catch(Exception ex)
+            {
+                message.Error(ex);
+            }
+            
+            return message;
         }
 
         public void Remove<TDto>(TDto dto)

@@ -20,9 +20,9 @@ namespace TaskManager.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> ObterTarefasPorProjeto(Guid projetoId)
         {
-            var dados = await this.appService.GetListByCondition<TarefaDto>(x => x.ProjetoId == projetoId);
+            var message = await this.appService.GetListByCondition<TarefaDto>(x => x.ProjetoId == projetoId);
 
-            return StatusCode(200, dados);
+            return StatusCode(message.StatusCode, message);
         }
     }   
 }

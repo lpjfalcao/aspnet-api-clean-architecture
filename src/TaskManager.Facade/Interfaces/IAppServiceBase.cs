@@ -6,7 +6,7 @@ namespace TaskManager.Application.Interfaces
     public interface IAppServiceBase<TEntity>
     {
         Task<MessageHelper<TEntity>> Add<TDto>(TDto dto);
-        Task<IEnumerable<TDto>> GetListByCondition<TDto>(Expression<Func<TEntity, bool>> expression);
+        Task<MessageHelper<IEnumerable<TDto>>> GetListByCondition<TDto>(Expression<Func<TEntity, bool>> expression);
         Task<MessageHelper<TDto>> GetByCondition<TDto>(Expression<Func<TEntity, bool>> expression);
         Task<MessageHelper<IEnumerable<TDto>>> GetAll<TDto>();
         void Update<TDto>(TDto dto);

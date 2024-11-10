@@ -13,6 +13,7 @@ namespace TaskManager.WebApi
             builder.Services.AddAutoMapper(typeof(ProjetoMappingProfile));
             builder.Services.ConfigureSqlContext(builder.Configuration);
             builder.Services.ConfigureRepositories();
+            builder.Services.ConfigureAppServices();
             builder.Services.ConfigureServices();
             builder.Services.AddControllers().AddNewtonsoftJson();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

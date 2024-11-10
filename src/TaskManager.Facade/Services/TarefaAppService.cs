@@ -55,20 +55,11 @@ namespace TaskManager.Application.Services
 
             try
             {
-                var projeto = await this.repositoryManager.Projeto.ObterProjetoPorId(projetoId, false);
-
-                if (projeto == null)
-                    throw new Exception("O projeto não foi encontrado");
-
-                var tarefa = await this.repositoryManager.Tarefa.ObterTarefaPorId(projetoId, id, true);
-
-                if (tarefa == null)
-                    throw new Exception("A tarefa não foi encontrada");
-
+                var projeto = await this.repositoryManager.Projeto.ObterProjetoPorId(projetoId, false) ?? throw new Exception("O projeto não foi encontrado");
+                var tarefa = await this.repositoryManager.Tarefa.ObterTarefaPorId(projetoId, id, true) ?? throw new Exception("A tarefa não foi encontrada");
+               
                 if (patchDoc.Operations.Where(x => x.path.Contains("prioridade")).Any())
-                {
                     this.tarefaService.ValidarPrioriedade(tarefa);
-                }                
 
                 var tarefaToPatch = this.mapper.Map<TarefaDto>(tarefa);
 

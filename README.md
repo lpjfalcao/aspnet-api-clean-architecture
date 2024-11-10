@@ -1,10 +1,6 @@
 # dotnet-api-task-manager
 Projeto de REST API construída com .NET 6, com uso de Padrões de Projetos e Clean Architecture. 
 
-## Documentação da API:
-
-https://localhost:7194/swagger/index.html
-
 ## Pré-requisitos:
 
 Antes de executar o projeto certifique-se de ter as configurações abaixo instaladas no seu ambiente.

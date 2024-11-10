@@ -16,6 +16,9 @@ namespace TaskManager.Domain.Entities
         public Guid ProjetoId { get; set; }
         public Projeto Projeto { get; set; }
 
+        public Guid UsuarioId { get; set; }
+        public Usuario Usuario { get; set; }
+
         public ICollection<HistoricoAlteracao> HistoricoAlteracoes { get; set; }
     }
 }

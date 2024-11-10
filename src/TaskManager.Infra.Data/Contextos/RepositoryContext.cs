@@ -15,9 +15,12 @@ namespace TaskManager.Infra.Data.Contextos
         {
             modelBuilder.ApplyConfiguration(new ProjetoConfiguration());
             modelBuilder.ApplyConfiguration(new TarefaConfiguration());
+            modelBuilder.ApplyConfiguration(new UsuarioConfiguration());
         }
 
         public DbSet<Projeto> Projetos { get; set; }
         public DbSet<Tarefa> Tarefas { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<HistoricoAlteracao> HistoricoAlteracoes { get; set; }
     }
 }

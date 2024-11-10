@@ -18,7 +18,8 @@ namespace TaskManager.Infra.Data.Configurations
                     Descricao = "Essa é uma tarefa para realizar o cadastro de usuários no sistema",
                     ProjetoId = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
                     Status = TarefaStatusEnum.Pendente,
-                    Prioridade = PrioridadeTarefaEnum.Media
+                    Prioridade = PrioridadeTarefaEnum.Media,
+                    UsuarioId = new Guid("a69c1158-3c7e-4441-a3da-d060c2b5604c")
                 },
                 new Tarefa
                 {
@@ -28,7 +29,8 @@ namespace TaskManager.Infra.Data.Configurations
                     Descricao = "Essa é uma tarefa para criar uma nova sprint para o projeto",
                     ProjetoId = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
                     Status = TarefaStatusEnum.Concluido,
-                    Prioridade = PrioridadeTarefaEnum.Baixa
+                    Prioridade = PrioridadeTarefaEnum.Baixa,
+                    UsuarioId = new Guid("a69c1158-3c7e-4441-a3da-d060c2b5604c")
                 },
                 new Tarefa
                 {
@@ -38,7 +40,8 @@ namespace TaskManager.Infra.Data.Configurations
                     Descricao = "Essa é uma tarefa para marcar uma reunião com o time",
                     ProjetoId = new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"),
                     Status = TarefaStatusEnum.Andamento,
-                    Prioridade = PrioridadeTarefaEnum.Alta
+                    Prioridade = PrioridadeTarefaEnum.Alta,
+                    UsuarioId = new Guid("0f58ef89-c87e-4c09-a9ad-4cbc2f764aec")
                 });
         }
     }

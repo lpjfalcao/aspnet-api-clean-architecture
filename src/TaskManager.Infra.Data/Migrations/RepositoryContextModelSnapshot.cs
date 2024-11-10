@@ -51,7 +51,7 @@ namespace TaskManager.Infra.Data.Migrations
 
                     b.HasIndex("TarefaId");
 
-                    b.ToTable("HistoricoAlteracao");
+                    b.ToTable("HistoricoAlteracoes");
                 });
 
             modelBuilder.Entity("TaskManager.Domain.Entities.Projeto", b =>
@@ -109,9 +109,14 @@ namespace TaskManager.Infra.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("UsuarioId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ProjetoId");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Tarefas");
 
@@ -119,32 +124,63 @@ namespace TaskManager.Infra.Data.Migrations
                         new
                         {
                             Id = new Guid("80abbca8-664d-4b20-b5de-024705497d4a"),
-                            DataVencimento = new DateTime(2024, 11, 15, 10, 46, 51, 827, DateTimeKind.Local).AddTicks(880),
+                            DataVencimento = new DateTime(2024, 11, 15, 11, 43, 18, 654, DateTimeKind.Local).AddTicks(5815),
                             Descricao = "Essa é uma tarefa para realizar o cadastro de usuários no sistema",
                             Prioridade = 2,
                             ProjetoId = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
                             Status = 1,
-                            Titulo = "Cadastrar Usuários no Sistema"
+                            Titulo = "Cadastrar Usuários no Sistema",
+                            UsuarioId = new Guid("a69c1158-3c7e-4441-a3da-d060c2b5604c")
                         },
                         new
                         {
                             Id = new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a"),
-                            DataVencimento = new DateTime(2024, 11, 20, 10, 46, 51, 827, DateTimeKind.Local).AddTicks(897),
+                            DataVencimento = new DateTime(2024, 11, 20, 11, 43, 18, 654, DateTimeKind.Local).AddTicks(5835),
                             Descricao = "Essa é uma tarefa para criar uma nova sprint para o projeto",
                             Prioridade = 1,
                             ProjetoId = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
                             Status = 3,
-                            Titulo = "Criar uma nova Sprint para o Projeto"
+                            Titulo = "Criar uma nova Sprint para o Projeto",
+                            UsuarioId = new Guid("a69c1158-3c7e-4441-a3da-d060c2b5604c")
                         },
                         new
                         {
                             Id = new Guid("021ca3c1-0deb-4afd-ae94-2159a8479811"),
-                            DataVencimento = new DateTime(2024, 11, 25, 10, 46, 51, 827, DateTimeKind.Local).AddTicks(900),
+                            DataVencimento = new DateTime(2024, 11, 25, 11, 43, 18, 654, DateTimeKind.Local).AddTicks(5838),
                             Descricao = "Essa é uma tarefa para marcar uma reunião com o time",
                             Prioridade = 3,
                             ProjetoId = new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"),
                             Status = 2,
-                            Titulo = "Marcar reunião de retrospectiva com os membros do time"
+                            Titulo = "Marcar reunião de retrospectiva com os membros do time",
+                            UsuarioId = new Guid("0f58ef89-c87e-4c09-a9ad-4cbc2f764aec")
+                        });
+                });
+
+            modelBuilder.Entity("TaskManager.Domain.Entities.Usuario", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("UsuarioId");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Usuarios");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("0f58ef89-c87e-4c09-a9ad-4cbc2f764aec"),
+                            Nome = "Jimmy Page"
+                        },
+                        new
+                        {
+                            Id = new Guid("a69c1158-3c7e-4441-a3da-d060c2b5604c"),
+                            Nome = "Jimmy Hendrix"
                         });
                 });
 
@@ -167,7 +203,15 @@ namespace TaskManager.Infra.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("TaskManager.Domain.Entities.Usuario", "Usuario")
+                        .WithMany("Tarefas")
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Projeto");
+
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("TaskManager.Domain.Entities.Projeto", b =>
@@ -178,6 +222,11 @@ namespace TaskManager.Infra.Data.Migrations
             modelBuilder.Entity("TaskManager.Domain.Entities.Tarefa", b =>
                 {
                     b.Navigation("HistoricoAlteracoes");
+                });
+
+            modelBuilder.Entity("TaskManager.Domain.Entities.Usuario", b =>
+                {
+                    b.Navigation("Tarefas");
                 });
 #pragma warning restore 612, 618
         }

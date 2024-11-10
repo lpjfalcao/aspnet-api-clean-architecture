@@ -14,6 +14,7 @@ namespace TaskManager.Application.Services
     {
         private readonly IRepositoryManager repositoryManager;
         private readonly ITarefaService tarefaService;
+        private readonly IProjetoService projetoService;
         private readonly IHistoricoAlteracaoService historicoAlteracaoService;
         private readonly IMapper mapper;
 
@@ -34,6 +35,8 @@ namespace TaskManager.Application.Services
                 var tarefa = this.mapper.Map<Tarefa>(tarefaDto);
 
                 this.tarefaService.ConfigurarPrioriedade(tarefa);
+
+                await this.projetoService.ValidarLimiteMaximoTarefasPorProjeto(projetoId);
 
                 this.repositoryManager.Tarefa.CriarTarefaPorProjeto(projetoId, tarefa);
 

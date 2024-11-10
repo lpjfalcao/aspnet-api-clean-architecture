@@ -96,7 +96,6 @@ namespace TaskManager.Infra.Data.Helpers
             Success = false;
             StatusCode = (int)StatusCodeEnum.BadRequest;
             Message = ex.Message;
-            StackTrace = ex.StackTrace;
         }
 
         public void Error(Exception ex)

@@ -17,18 +17,26 @@ namespace TaskManager.Infra.CrossCutting.IoC
             services.AddDbContext<RepositoryContext>(options => options.UseSqlServer(configuration.GetConnectionString("sqlConnection"), builder =>
                 builder.MigrationsAssembly("TaskManager.Infra.Data")));
 
-        public static void ConfigureServices(this IServiceCollection services)
+        public static void ConfigureAppServices(this IServiceCollection services)
         {
             services.AddScoped(typeof(IAppServiceBase<>), typeof(AppServiceBase<>));
-            services.AddScoped(typeof(IServiceBase<>), typeof(ServiceBase<>));
             services.AddScoped<ITarefaAppService, TarefaAppService>();
+            services.AddScoped<IProjetoAppService, ProjetoAppService>();
+        }
+
+        public static void ConfigureServices(this IServiceCollection services)
+        {
+            services.AddScoped(typeof(IServiceBase<>), typeof(ServiceBase<>));
             services.AddScoped<ITarefaService, TarefaService>();
+            services.AddScoped<IProjetoService, ProjetoService>();
         }
 
         public static void ConfigureRepositories(this IServiceCollection services)
         {
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
             services.AddScoped<IRepositoryManager, RepositoryManager>();
+            services.AddScoped<ITarefaRepository, TarefaRepository>();
+            services.AddScoped<IProjetoRepository, ProjetoRepository>();
         }
     }
 }

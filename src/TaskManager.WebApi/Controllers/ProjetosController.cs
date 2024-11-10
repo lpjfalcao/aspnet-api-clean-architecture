@@ -9,11 +9,13 @@ namespace TaskManager.WebApi.Controllers
     [ApiController]
     public class ProjetosController : ControllerBase
     {
-        private IAppServiceBase<Projeto> appService;
+        private readonly IAppServiceBase<Projeto> appService;
+        private readonly IProjetoAppService projetoAppService;
 
-        public ProjetosController(IAppServiceBase<Projeto> appService)
+        public ProjetosController(IAppServiceBase<Projeto> appService, IProjetoAppService projetoAppService)
         {
             this.appService = appService;
+            this.projetoAppService = projetoAppService;
         }
 
         [HttpGet]
@@ -38,6 +40,14 @@ namespace TaskManager.WebApi.Controllers
             var message = await this.appService.Add<ProjetoCreationDto>(projetoDto);
 
             return CreatedAtRoute("ObterProjetosPorId", new { message.Data.Id }, message.Data);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> RemoverProjeto(Guid projetoId)
+        {
+            var message = await this.projetoAppService.RemoverProjeto(projetoId);
+
+            return StatusCode(message.StatusCode, message);
         }
     }
 }

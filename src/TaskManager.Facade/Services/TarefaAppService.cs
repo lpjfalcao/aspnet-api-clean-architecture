@@ -36,12 +36,12 @@ namespace TaskManager.Application.Services
                 this.tarefaService.ConfigurarPrioriedade(tarefa);
 
                 this.repositoryManager.Tarefa.CriarTarefaPorProjeto(projetoId, tarefa);
-               
+
                 await this.repositoryManager.Commit();
 
                 message.Ok(this.mapper.Map<TarefaDto>(tarefa));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 message.Error(ex);
             }
@@ -57,7 +57,7 @@ namespace TaskManager.Application.Services
             {
                 var projeto = await this.repositoryManager.Projeto.ObterProjetoPorId(projetoId, false) ?? throw new Exception("O projeto não foi encontrado");
                 var tarefa = await this.repositoryManager.Tarefa.ObterTarefaPorId(projetoId, id, true) ?? throw new Exception("A tarefa não foi encontrada");
-               
+
                 if (patchDoc.Operations.Where(x => x.path.Contains("prioridade")).Any())
                     this.tarefaService.ValidarPrioriedade(tarefa);
 
@@ -70,9 +70,7 @@ namespace TaskManager.Application.Services
                 var historicoAlteracoes = await this.historicoAlteracaoService.ObterHistoricoAlteracao(projetoId, tarefa);
 
                 foreach (var historicoAlteracao in historicoAlteracoes)
-                {
                     this.repositoryManager.HistoricoAlteracao.CriarHistorico(id, historicoAlteracao);
-                }                
 
                 await this.repositoryManager.Commit();
 
@@ -111,7 +109,7 @@ namespace TaskManager.Application.Services
                 await this.repositoryManager.Commit();
 
                 message.Ok();
-            }           
+            }
             catch (Exception ex)
             {
                 message.Error(ex);

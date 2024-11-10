@@ -31,6 +31,8 @@ O projeto usa o Entity Framework Core como solução de ORM para manipular e ace
 5. Rode o comando **Update-Database**
 6. Ao final você deve ter um banco de dados configurado na sua instância do SQL Server em sua máquina com as tabelas usadas no projeto
 
+Obs.: Para a conexão com o banco funcionar é necessário que seu SQL Server esteja configurado para permitir conexões de redes remotas e que no SQL Server Configuration Manager esteja com a opção TCP/IP habilitada.
+
 ## Testando o Projeto
 
 Você pode utilizar a interface do Swagger para testar alguns endpoints: http://localhost:5000/swagger/index.html

@@ -5,12 +5,12 @@ namespace TaskManager.Domain.Enum
     public enum TarefaStatusEnum
     {
         [Description("Pendente")]
-        Pendente,
+        Pendente = 1,
 
         [Description("Andamento")]
-        Andamento,
+        Andamento = 2,
 
         [Description("Concluido")]
-        Concluido
+        Concluido = 3
     }
 }

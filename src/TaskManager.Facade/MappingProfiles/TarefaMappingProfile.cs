@@ -13,7 +13,8 @@ namespace TaskManager.Application.MappingProfiles
         public TarefaMappingProfile()
         {
             CreateMap<Tarefa, TarefaDto>()
-                .ForMember(x => x.Status, opt => opt.MapFrom(x => GetDescriptionFromStatusValue(x.Status)));
+                .ForMember(x => x.Status, opt => opt.MapFrom(x => GetDescriptionFromStatusValue<TarefaStatusEnum>(x.Status)))
+                .ForMember(x => x.Prioridade, opt => opt.MapFrom(x => GetDescriptionFromStatusValue<PrioridadeTarefaEnum?>(x.Prioridade)));                             
 
             CreateMap<TarefaDto, Tarefa>()
                 .ForMember(x => x.Status, opt => opt.MapFrom(x => x.Status));
@@ -21,7 +22,7 @@ namespace TaskManager.Application.MappingProfiles
             CreateMap<TarefaCreationDto, Tarefa>();
         }
 
-        private string GetDescriptionFromStatusValue(TarefaStatusEnum status)
+        private string GetDescriptionFromStatusValue<T>(T status) 
         {
             FieldInfo field = status.GetType().GetField(status.ToString());
             DescriptionAttribute attribute =

@@ -53,6 +53,14 @@ namespace TaskManager.Infra.Data.Helpers
             StatusCode = (int)StatusCodeEnum.Created;
             Message = "Recurso cadastrado com sucesso";
         }
+
+        public void BadRequest(Exception ex)
+        {
+            Success = false;
+            StatusCode = (int)StatusCodeEnum.BadRequest;
+            Message = ex.Message;
+            StackTrace = ex.StackTrace;
+        }
     }
     public class MessageHelper
     {
@@ -81,6 +89,14 @@ namespace TaskManager.Infra.Data.Helpers
             Success = false;
             StatusCode = (int)StatusCodeEnum.BadRequest;
             Validations = validations;
+        }
+
+        public void BadRequest(Exception ex)
+        {
+            Success = false;
+            StatusCode = (int)StatusCodeEnum.BadRequest;
+            Message = ex.Message;
+            StackTrace = ex.StackTrace;
         }
 
         public void Error(Exception ex)

@@ -13,6 +13,7 @@ namespace TaskManager.Infra.Data.DataTransferObjects
         public string Descricao { get; set; }
         public DateTime DataVencimento { get; set; }
         public string Status { get; set; }
+        public string Prioridade { get; set; }
 
         public Guid ProjetoId { get; set; }
     }

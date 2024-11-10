@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaskManager.Infra.Data.Contextos;
 
@@ -11,9 +12,11 @@ using TaskManager.Infra.Data.Contextos;
 namespace TaskManager.Infra.Data.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20241110105416_AddColunaPrioriedade")]
+    partial class AddColunaPrioriedade
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,7 +67,7 @@ namespace TaskManager.Infra.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Prioridade")
+                    b.Property<int>("Prioridade")
                         .HasColumnType("int");
 
                     b.Property<Guid>("ProjetoId")
@@ -87,31 +90,31 @@ namespace TaskManager.Infra.Data.Migrations
                         new
                         {
                             Id = new Guid("80abbca8-664d-4b20-b5de-024705497d4a"),
-                            DataVencimento = new DateTime(2024, 11, 15, 8, 27, 15, 826, DateTimeKind.Local).AddTicks(9307),
+                            DataVencimento = new DateTime(2024, 11, 15, 7, 54, 16, 543, DateTimeKind.Local).AddTicks(1928),
                             Descricao = "Essa é uma tarefa para realizar o cadastro de usuários no sistema",
-                            Prioridade = 2,
+                            Prioridade = 0,
                             ProjetoId = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
-                            Status = 1,
+                            Status = 0,
                             Titulo = "Cadastrar Usuários no Sistema"
                         },
                         new
                         {
                             Id = new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a"),
-                            DataVencimento = new DateTime(2024, 11, 20, 8, 27, 15, 826, DateTimeKind.Local).AddTicks(9328),
+                            DataVencimento = new DateTime(2024, 11, 20, 7, 54, 16, 543, DateTimeKind.Local).AddTicks(1944),
                             Descricao = "Essa é uma tarefa para criar uma nova sprint para o projeto",
-                            Prioridade = 1,
+                            Prioridade = 0,
                             ProjetoId = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
-                            Status = 3,
+                            Status = 0,
                             Titulo = "Criar uma nova Sprint para o Projeto"
                         },
                         new
                         {
                             Id = new Guid("021ca3c1-0deb-4afd-ae94-2159a8479811"),
-                            DataVencimento = new DateTime(2024, 11, 25, 8, 27, 15, 826, DateTimeKind.Local).AddTicks(9331),
+                            DataVencimento = new DateTime(2024, 11, 25, 7, 54, 16, 543, DateTimeKind.Local).AddTicks(1946),
                             Descricao = "Essa é uma tarefa para marcar uma reunião com o time",
-                            Prioridade = 3,
+                            Prioridade = 0,
                             ProjetoId = new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"),
-                            Status = 2,
+                            Status = 0,
                             Titulo = "Marcar reunião de retrospectiva com os membros do time"
                         });
                 });

@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.JsonPatch;
 using TaskManager.Application.Interfaces;
 using TaskManager.Domain.Entities;
+using TaskManager.Domain.Exceptions;
 using TaskManager.Domain.Interfaces.Repositories;
+using TaskManager.Domain.Interfaces.Services;
 using TaskManager.Infra.Data.DataTransferObjects;
 using TaskManager.Infra.Data.Helpers;
 
@@ -11,11 +13,13 @@ namespace TaskManager.Application.Services
     public class TarefaAppService : ITarefaAppService
     {
         private readonly IRepositoryManager repositoryManager;
+        private readonly ITarefaService tarefaService;
         private readonly IMapper mapper;
 
-        public TarefaAppService(IRepositoryManager repositoryManager, IMapper mapper)
+        public TarefaAppService(IRepositoryManager repositoryManager, ITarefaService tarefaService, IMapper mapper)
         {
             this.repositoryManager = repositoryManager;
+            this.tarefaService = tarefaService;
             this.mapper = mapper;
         }
 
@@ -26,6 +30,8 @@ namespace TaskManager.Application.Services
             try
             {
                 var tarefa = this.mapper.Map<Tarefa>(tarefaDto);
+
+                this.tarefaService.ConfigurarPrioriedade(tarefa);
 
                 this.repositoryManager.Tarefa.CriarTarefaPorProjeto(projetoId, tarefa);
                
@@ -57,6 +63,8 @@ namespace TaskManager.Application.Services
                 if (tarefa == null)
                     throw new Exception("A tarefa não foi encontrada");
 
+                this.tarefaService.ValidarPrioriedade(tarefa);
+
                 var tarefaToPatch = this.mapper.Map<TarefaDto>(tarefa);
 
                 patchDoc.ApplyTo(tarefaToPatch);
@@ -67,7 +75,11 @@ namespace TaskManager.Application.Services
 
                 message.Ok();
             }
-            catch(Exception ex)
+            catch (OperacaoNaoPermitidaException ex)
+            {
+                message.BadRequest(ex);
+            }
+            catch (Exception ex)
             {
                 message.Error(ex);
             }
@@ -96,7 +108,7 @@ namespace TaskManager.Application.Services
                 await this.repositoryManager.Commit();
 
                 message.Ok();
-            }
+            }           
             catch (Exception ex)
             {
                 message.Error(ex);

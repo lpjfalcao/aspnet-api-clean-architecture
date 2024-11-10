@@ -4,6 +4,7 @@
     {
         ITarefaRepository Tarefa { get; }
         IProjetoRepository Projeto { get; }
+        IHistoricoAlteracaoRepository HistoricoAlteracao { get; }
         Task Commit();
     }
 }

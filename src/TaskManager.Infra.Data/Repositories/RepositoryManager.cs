@@ -9,6 +9,7 @@ namespace TaskManager.Infra.Data.Repositories
     {
         private ITarefaRepository tarefa;
         private IProjetoRepository projeto;
+        private IHistoricoAlteracaoRepository historicoAlteracao;
 
         private RepositoryContext contexto;
 
@@ -27,12 +28,23 @@ namespace TaskManager.Infra.Data.Repositories
         {
             get
             {
-                if (projeto == null)
+                if (this.projeto == null)
                     return RepositoryFactory.Create(RepositoryTypeEnum.Projeto, contexto);
 
                 return this.projeto;
             }
         }
+
+        public IHistoricoAlteracaoRepository HistoricoAlteracao
+        {
+            get
+            {
+                if (this.historicoAlteracao == null)
+                    return RepositoryFactory.Create(RepositoryTypeEnum.HistoricoAlteracao, contexto);
+
+                return this.historicoAlteracao;
+            }
+        }           
 
         public RepositoryManager(RepositoryContext contexto)
         {

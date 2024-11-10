@@ -29,6 +29,7 @@ namespace TaskManager.Infra.CrossCutting.IoC
             services.AddScoped(typeof(IServiceBase<>), typeof(ServiceBase<>));
             services.AddScoped<ITarefaService, TarefaService>();
             services.AddScoped<IProjetoService, ProjetoService>();
+            services.AddScoped<IHistoricoAlteracaoService, HistoricoAlteracaoService>();
         }
 
         public static void ConfigureRepositories(this IServiceCollection services)
@@ -37,6 +38,7 @@ namespace TaskManager.Infra.CrossCutting.IoC
             services.AddScoped<IRepositoryManager, RepositoryManager>();
             services.AddScoped<ITarefaRepository, TarefaRepository>();
             services.AddScoped<IProjetoRepository, ProjetoRepository>();
+            services.AddScoped<IHistoricoAlteracaoRepository, HistoricoAlteracaoRepository>();
         }
     }
 }

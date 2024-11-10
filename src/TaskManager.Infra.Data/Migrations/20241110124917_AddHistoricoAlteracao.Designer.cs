@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaskManager.Infra.Data.Contextos;
 
@@ -11,9 +12,11 @@ using TaskManager.Infra.Data.Contextos;
 namespace TaskManager.Infra.Data.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20241110124917_AddHistoricoAlteracao")]
+    partial class AddHistoricoAlteracao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,8 +40,9 @@ namespace TaskManager.Infra.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DataAlteracao")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("DataAlteracao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Depois")
                         .IsRequired()
@@ -119,7 +123,7 @@ namespace TaskManager.Infra.Data.Migrations
                         new
                         {
                             Id = new Guid("80abbca8-664d-4b20-b5de-024705497d4a"),
-                            DataVencimento = new DateTime(2024, 11, 15, 10, 46, 51, 827, DateTimeKind.Local).AddTicks(880),
+                            DataVencimento = new DateTime(2024, 11, 15, 9, 49, 17, 845, DateTimeKind.Local).AddTicks(8363),
                             Descricao = "Essa é uma tarefa para realizar o cadastro de usuários no sistema",
                             Prioridade = 2,
                             ProjetoId = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
@@ -129,7 +133,7 @@ namespace TaskManager.Infra.Data.Migrations
                         new
                         {
                             Id = new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a"),
-                            DataVencimento = new DateTime(2024, 11, 20, 10, 46, 51, 827, DateTimeKind.Local).AddTicks(897),
+                            DataVencimento = new DateTime(2024, 11, 20, 9, 49, 17, 845, DateTimeKind.Local).AddTicks(8384),
                             Descricao = "Essa é uma tarefa para criar uma nova sprint para o projeto",
                             Prioridade = 1,
                             ProjetoId = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
@@ -139,7 +143,7 @@ namespace TaskManager.Infra.Data.Migrations
                         new
                         {
                             Id = new Guid("021ca3c1-0deb-4afd-ae94-2159a8479811"),
-                            DataVencimento = new DateTime(2024, 11, 25, 10, 46, 51, 827, DateTimeKind.Local).AddTicks(900),
+                            DataVencimento = new DateTime(2024, 11, 25, 9, 49, 17, 845, DateTimeKind.Local).AddTicks(8387),
                             Descricao = "Essa é uma tarefa para marcar uma reunião com o time",
                             Prioridade = 3,
                             ProjetoId = new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"),

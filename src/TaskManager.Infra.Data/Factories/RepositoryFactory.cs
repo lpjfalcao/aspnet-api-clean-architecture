@@ -12,6 +12,7 @@ namespace TaskManager.Infra.Data.Factories
             {
                 RepositoryTypeEnum.Tarefa => new TarefaRepository(context),
                 RepositoryTypeEnum.Projeto => new ProjetoRepository(context),
+                RepositoryTypeEnum.HistoricoAlteracao => new HistoricoAlteracaoRepository(context),
                 _=> null
             };
         }

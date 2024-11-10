@@ -14,12 +14,14 @@ namespace TaskManager.Application.Services
     {
         private readonly IRepositoryManager repositoryManager;
         private readonly ITarefaService tarefaService;
+        private readonly IHistoricoAlteracaoService historicoAlteracaoService;
         private readonly IMapper mapper;
 
-        public TarefaAppService(IRepositoryManager repositoryManager, ITarefaService tarefaService, IMapper mapper)
+        public TarefaAppService(IRepositoryManager repositoryManager, ITarefaService tarefaService, IHistoricoAlteracaoService historicoAlteracaoService, IMapper mapper)
         {
             this.repositoryManager = repositoryManager;
             this.tarefaService = tarefaService;
+            this.historicoAlteracaoService = historicoAlteracaoService;
             this.mapper = mapper;
         }
 
@@ -63,13 +65,23 @@ namespace TaskManager.Application.Services
                 if (tarefa == null)
                     throw new Exception("A tarefa não foi encontrada");
 
-                this.tarefaService.ValidarPrioriedade(tarefa);
+                if (patchDoc.Operations.Where(x => x.path.Contains("prioridade")).Any())
+                {
+                    this.tarefaService.ValidarPrioriedade(tarefa);
+                }                
 
                 var tarefaToPatch = this.mapper.Map<TarefaDto>(tarefa);
 
                 patchDoc.ApplyTo(tarefaToPatch);
 
                 this.mapper.Map(tarefaToPatch, tarefa);
+
+                var historicoAlteracoes = await this.historicoAlteracaoService.ObterHistoricoAlteracao(projetoId, tarefa);
+
+                foreach (var historicoAlteracao in historicoAlteracoes)
+                {
+                    this.repositoryManager.HistoricoAlteracao.CriarHistorico(id, historicoAlteracao);
+                }                
 
                 await this.repositoryManager.Commit();
 

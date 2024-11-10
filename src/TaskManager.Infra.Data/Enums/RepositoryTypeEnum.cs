@@ -3,6 +3,7 @@
     public enum RepositoryTypeEnum
     {
         Tarefa,
-        Projeto
+        Projeto,
+        HistoricoAlteracao
     }
 }

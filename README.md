@@ -60,7 +60,7 @@ Abaixo segue alguns ids válidos:
 - Se não é necessário implementar autenticação/autorização nessa fase por que há uma regra para restringir os relatórios para usuários com função específica de "gerente"? 
 - Sabemos que cada projeto deve ter uma prioridade atribuída, mas caso nenhuma prioridade seja informada qual deve ser definida por padrão? Como isso não foi especificado estamos definindo uma prioridade baixa por padrão caso nenhuma outra seja informada.
 - Não ficou claro se na listagem de projetos devemos listar todos os projetos do sistema ou projetos de um usuário específico. Na modelagem atual e como foi sugerida pelos requisitos, o projeto não está associado a um usuário, mas sim a uma tarefa. Você acha interessante modelarmos o sistema de uma forma que o projeto esteja associado a um usuário ao invés de uma tarefa?
-- Além da restrição de uso do relatório existe alguma outra restrição do que o usuário pode ou não fazer no sistema? Que tipos de usuário é esperado que tenhamos no sistema?
+- Além da restrição de uso do relatório existe alguma outra restrição do que o usuário pode ou não fazer no sistema? Que tipos de usuário são esperados que tenhamos no sistema?
 - O sistema que estamos desenvolvendo irá crescer em complexidade no futuro? O quão complexo ele será? É esperado ter muitas funcionalidades e muitos usuários usando o sistema? Consegue ter uma ideia de quantos usuários esperamos atender?
 
  ## Fase 3: Final

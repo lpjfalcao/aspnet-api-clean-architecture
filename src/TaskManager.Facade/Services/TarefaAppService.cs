@@ -18,11 +18,15 @@ namespace TaskManager.Application.Services
         private readonly IHistoricoAlteracaoService historicoAlteracaoService;
         private readonly IMapper mapper;
 
-        public TarefaAppService(IRepositoryManager repositoryManager, ITarefaService tarefaService, IHistoricoAlteracaoService historicoAlteracaoService, IMapper mapper)
+        public TarefaAppService(IRepositoryManager repositoryManager, 
+            ITarefaService tarefaService,
+            IHistoricoAlteracaoService historicoAlteracaoService, 
+            IProjetoService projetoService, IMapper mapper)
         {
             this.repositoryManager = repositoryManager;
             this.tarefaService = tarefaService;
             this.historicoAlteracaoService = historicoAlteracaoService;
+            this.projetoService = projetoService;
             this.mapper = mapper;
         }
 

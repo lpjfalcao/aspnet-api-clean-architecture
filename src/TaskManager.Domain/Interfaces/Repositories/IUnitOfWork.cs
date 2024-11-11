@@ -1,6 +1,6 @@
 ﻿namespace TaskManager.Domain.Interfaces.Repositories
 {
-    public interface IRepositoryManager
+    public interface IUnitOfWork
     {
         ITarefaRepository Tarefa { get; }
         IProjetoRepository Projeto { get; }

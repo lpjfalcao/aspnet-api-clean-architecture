@@ -13,10 +13,10 @@ namespace TaskManager.Application.Services
 {
     public class ProjetoAppService : IProjetoAppService
     {
-        private readonly IRepositoryManager repositoryManager;
+        private readonly IUnitOfWork repositoryManager;
         private readonly IProjetoService projetoService;
 
-        public ProjetoAppService(IRepositoryManager repositoryManager, IProjetoService projetoService)
+        public ProjetoAppService(IUnitOfWork repositoryManager, IProjetoService projetoService)
         {
             this.repositoryManager = repositoryManager;
             this.projetoService = projetoService;

@@ -35,7 +35,7 @@ namespace TaskManager.Infra.CrossCutting.IoC
         public static void ConfigureRepositories(this IServiceCollection services)
         {
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
-            services.AddScoped<IRepositoryManager, RepositoryManager>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ITarefaRepository, TarefaRepository>();
             services.AddScoped<IProjetoRepository, ProjetoRepository>();
             services.AddScoped<IHistoricoAlteracaoRepository, HistoricoAlteracaoRepository>();

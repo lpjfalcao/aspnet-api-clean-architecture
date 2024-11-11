@@ -15,3 +15,5 @@
 /src/TaskManager.Tests/obj
 /src/TaskManager.WebApi/bin/Debug/net6.0
 /src/TaskManager.WebApi/obj
+/src/TaskManager.Tests/bin/Release/net6.0
+/.vs/slnx.sqlite

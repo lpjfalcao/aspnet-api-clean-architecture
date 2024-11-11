@@ -5,7 +5,7 @@ using TaskManager.Infra.Data.Factories;
 
 namespace TaskManager.Infra.Data.Repositories
 {
-    public class RepositoryManager : IRepositoryManager
+    public class UnitOfWork : IUnitOfWork
     {
         private ITarefaRepository tarefa;
         private IProjetoRepository projeto;
@@ -46,7 +46,7 @@ namespace TaskManager.Infra.Data.Repositories
             }
         }           
 
-        public RepositoryManager(RepositoryContext contexto)
+        public UnitOfWork(RepositoryContext contexto)
         {
             this.contexto = contexto;
         }

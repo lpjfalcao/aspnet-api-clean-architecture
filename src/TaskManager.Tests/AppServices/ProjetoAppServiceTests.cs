@@ -9,13 +9,13 @@ namespace TaskManager.Tests.AppServices
 {
     public class ProjetoAppServiceTests
     {
-        private readonly Mock<IRepositoryManager> _repositoryManagerMock;
+        private readonly Mock<IUnitOfWork> _repositoryManagerMock;
         private readonly Mock<IProjetoService> _projetoServiceMock;
         private readonly ProjetoAppService _projetoAppService;
 
         public ProjetoAppServiceTests()
         {
-            _repositoryManagerMock = new Mock<IRepositoryManager>();
+            _repositoryManagerMock = new Mock<IUnitOfWork>();
             _projetoServiceMock = new Mock<IProjetoService>();
             _projetoAppService = new ProjetoAppService(_repositoryManagerMock.Object, _projetoServiceMock.Object);
         }

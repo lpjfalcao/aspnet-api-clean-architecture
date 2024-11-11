@@ -9,8 +9,8 @@ namespace TaskManager.Application.Interfaces
         Task<MessageHelper<IEnumerable<TDto>>> GetListByCondition<TDto>(Expression<Func<TEntity, bool>> expression);
         Task<MessageHelper<TDto>> GetByCondition<TDto>(Expression<Func<TEntity, bool>> expression);
         Task<MessageHelper<IEnumerable<TDto>>> GetAll<TDto>();
-        void Update<TDto>(TDto dto);
-        void Remove<TDto>(TDto dto);
+        Task<MessageHelper> Update<TDto>(TDto dto);
+        Task<MessageHelper> Remove<TDto>(TDto dto);
         Task Commit();
     }
 }

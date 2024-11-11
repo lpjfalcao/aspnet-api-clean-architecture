@@ -13,7 +13,7 @@ namespace TaskManager.Tests.AppServices
 {
     public class TarefaAppServiceTests
     {
-        private readonly Mock<IRepositoryManager> _repositoryManagerMock;
+        private readonly Mock<IUnitOfWork> _repositoryManagerMock;
         private readonly Mock<ITarefaService> _tarefaServiceMock;
         private readonly Mock<IProjetoService> _projetoServiceMock;
         private readonly Mock<IHistoricoAlteracaoService> _historicoAlteracaoServiceMock;
@@ -22,7 +22,7 @@ namespace TaskManager.Tests.AppServices
 
         public TarefaAppServiceTests()
         {
-            _repositoryManagerMock = new Mock<IRepositoryManager>();
+            _repositoryManagerMock = new Mock<IUnitOfWork>();
             _tarefaServiceMock = new Mock<ITarefaService>();
             _projetoServiceMock = new Mock<IProjetoService>();
             _historicoAlteracaoServiceMock = new Mock<IHistoricoAlteracaoService>();

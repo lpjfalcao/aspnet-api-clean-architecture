@@ -12,13 +12,13 @@ namespace TaskManager.Application.Services
 {
     public class TarefaAppService : ITarefaAppService
     {
-        private readonly IRepositoryManager repositoryManager;
+        private readonly IUnitOfWork repositoryManager;
         private readonly ITarefaService tarefaService;
         private readonly IProjetoService projetoService;
         private readonly IHistoricoAlteracaoService historicoAlteracaoService;
         private readonly IMapper mapper;
 
-        public TarefaAppService(IRepositoryManager repositoryManager, 
+        public TarefaAppService(IUnitOfWork repositoryManager, 
             ITarefaService tarefaService,
             IHistoricoAlteracaoService historicoAlteracaoService, 
             IProjetoService projetoService, IMapper mapper)

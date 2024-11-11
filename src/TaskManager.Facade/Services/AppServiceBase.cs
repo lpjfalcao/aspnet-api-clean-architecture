@@ -115,18 +115,48 @@ namespace TaskManager.Application.Services
             return message;
         }
 
-        public void Remove<TDto>(TDto dto)
+        public async Task<MessageHelper> Remove<TDto>(TDto dto)
         {
-            var model = this.mapper.Map<TEntity>(dto);
+            var message = new MessageHelper();
 
-            this.service.Remove(model);
+            try
+            {
+                var model = this.mapper.Map<TEntity>(dto);
+
+                this.service.Remove(model);
+
+                await this.service.Commit();
+
+                message.Ok();
+            }
+            catch(Exception ex)
+            {
+                message.Error(ex);
+            }
+
+            return message;
         }
 
-        public void Update<TDto>(TDto dto)
+        public async Task<MessageHelper> Update<TDto>(TDto dto)
         {
-            var model = this.mapper.Map<TEntity>(dto);
+            var message = new MessageHelper();
 
-            this.service.Update(model);
+            try
+            {
+                var model = this.mapper.Map<TEntity>(dto);
+
+                this.service.Update(model);
+
+                await this.service.Commit();
+
+                message.Ok();
+            }
+            catch (Exception ex)
+            {
+                message.Error(ex);
+            }
+
+            return message;
         }
 
         public async Task Commit()

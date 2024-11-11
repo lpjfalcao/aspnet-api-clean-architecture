@@ -56,7 +56,7 @@ namespace TaskManager.Application.Services
             return message;
         }
 
-        public async Task<MessageHelper> AtualizarCamposTarefa(Guid projetoId, Guid id, JsonPatchDocument<TarefaDto> patchDoc)
+        public async Task<MessageHelper> AtualizarCamposTarefa(Guid projetoId, Guid id, JsonPatchDocument<TarefaUpdateDto> patchDoc)
         {
             var message = new MessageHelper();
 
@@ -68,7 +68,7 @@ namespace TaskManager.Application.Services
                 if (patchDoc.Operations.Where(x => x.path.Contains("prioridade")).Any())
                     this.tarefaService.ValidarPrioriedade(tarefa);
 
-                var tarefaToPatch = this.mapper.Map<TarefaDto>(tarefa);
+                var tarefaToPatch = this.mapper.Map<TarefaUpdateDto>(tarefa);
 
                 patchDoc.ApplyTo(tarefaToPatch);
 

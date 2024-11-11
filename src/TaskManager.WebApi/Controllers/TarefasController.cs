@@ -47,7 +47,7 @@ namespace TaskManager.WebApi.Controllers
         }
 
         [HttpPatch("{id}")]
-        public async Task<IActionResult> AtualizarCamposTarefa(Guid projetoId, Guid id, [FromBody] JsonPatchDocument<TarefaDto> patchDoc)
+        public async Task<IActionResult> AtualizarCamposTarefa(Guid projetoId, Guid id, [FromBody] JsonPatchDocument<TarefaUpdateDto> patchDoc)
         {
             var message = await this.tarefaAppService.AtualizarCamposTarefa(projetoId, id, patchDoc);
 

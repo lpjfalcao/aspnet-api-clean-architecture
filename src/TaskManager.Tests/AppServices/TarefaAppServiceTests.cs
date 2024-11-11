@@ -31,6 +31,8 @@ namespace TaskManager.Tests.AppServices
                 cfg.CreateMap<TarefaCreationDto, Tarefa>();
                 cfg.CreateMap<Tarefa, TarefaDto>();
                 cfg.CreateMap<TarefaDto, Tarefa>();
+                cfg.CreateMap<TarefaUpdateDto, Tarefa>()
+                .ReverseMap();
             });
             _mapper = config.CreateMapper();
             _tarefaAppService = new TarefaAppService(
@@ -51,8 +53,8 @@ namespace TaskManager.Tests.AppServices
             {
                 DataVencimento = DateTime.Now,
                 Descricao = "teste",
-                Prioridade = "Alta",
-                Status = "Pendente",
+                Prioridade = PrioridadeTarefaEnum.Alta,
+                Status = TarefaStatusEnum.Pendente,
                 Titulo = "teste"
             };
 
@@ -79,8 +81,8 @@ namespace TaskManager.Tests.AppServices
             {
                 DataVencimento = DateTime.Now,
                 Descricao = "teste",
-                Prioridade = "Alta",
-                Status = "Pendente",
+                Prioridade = PrioridadeTarefaEnum.Alta,
+                Status = TarefaStatusEnum.Pendente,
                 Titulo = "teste"
             };
 
@@ -107,7 +109,7 @@ namespace TaskManager.Tests.AppServices
             // Arrange
             var projetoId = Guid.NewGuid();
             var tarefaId = Guid.NewGuid();
-            var patchDoc = new JsonPatchDocument<TarefaDto>();
+            var patchDoc = new JsonPatchDocument<TarefaUpdateDto>();
             var tarefa = new Tarefa
             {
                 DataVencimento = DateTime.Now,

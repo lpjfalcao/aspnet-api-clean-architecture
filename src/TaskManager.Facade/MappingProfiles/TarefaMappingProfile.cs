@@ -20,6 +20,9 @@ namespace TaskManager.Application.MappingProfiles
                 .ForMember(x => x.Status, opt => opt.MapFrom(x => x.Status));
 
             CreateMap<TarefaCreationDto, Tarefa>();
+
+            CreateMap<Tarefa, TarefaUpdateDto>()
+                .ReverseMap();
         }
 
         private string GetDescriptionFromStatusValue<T>(T status) 

@@ -42,8 +42,10 @@ namespace TaskManager.WebApi.Controllers
         {
             var message = await this.tarefaAppService.CriarTarefa(projetoId, tarefaDto.UsuarioId, tarefaDto);
 
-            return CreatedAtRoute("ObterTarefasPorId", new { Id = message.Data.Id, ProjetoId = projetoId  }, message.Data);
-
+            if (message.Success)
+                return CreatedAtRoute("ObterTarefasPorId", new { Id = message.Data.Id, ProjetoId = projetoId }, message.Data);
+            else
+                return StatusCode(message.StatusCode, message);
         }
 
         [HttpPatch("{id}")]
@@ -69,5 +71,5 @@ namespace TaskManager.WebApi.Controllers
 
             return StatusCode(message.StatusCode, message);
         }
-    }   
+    }
 }

@@ -16,17 +16,20 @@ namespace TaskManager.Application.Services
         private readonly ITarefaService tarefaService;
         private readonly IProjetoService projetoService;
         private readonly IHistoricoAlteracaoService historicoAlteracaoService;
+        private readonly IUsuarioService usuarioService;
         private readonly IMapper mapper;
 
         public TarefaAppService(IUnitOfWork repositoryManager, 
             ITarefaService tarefaService,
             IHistoricoAlteracaoService historicoAlteracaoService, 
-            IProjetoService projetoService, IMapper mapper)
+            IProjetoService projetoService, IUsuarioService usuarioService, 
+            IMapper mapper)
         {
             this.repositoryManager = repositoryManager;
             this.tarefaService = tarefaService;
             this.historicoAlteracaoService = historicoAlteracaoService;
             this.projetoService = projetoService;
+            this.usuarioService = usuarioService;
             this.mapper = mapper;
         }
 
@@ -41,12 +44,21 @@ namespace TaskManager.Application.Services
                 this.tarefaService.ConfigurarPrioriedade(tarefa);
 
                 await this.projetoService.ValidarLimiteMaximoTarefasPorProjeto(projetoId);
+                
+                var usuarioExiste = await this.usuarioService.ValidarSeUsuarioExiste(usuarioId);
 
-                this.repositoryManager.Tarefa.CriarTarefaPorProjeto(projetoId, usuarioId, tarefa);
+                if (usuarioExiste)
+                {
+                    this.repositoryManager.Tarefa.CriarTarefaPorProjeto(projetoId, usuarioId, tarefa);
 
-                await this.repositoryManager.Commit();
+                    await this.repositoryManager.Commit();
 
-                message.Ok(this.mapper.Map<TarefaDto>(tarefa));
+                    message.Ok(this.mapper.Map<TarefaDto>(tarefa));
+                }
+            }
+            catch (OperacaoNaoPermitidaException ex)
+            {
+                message.BadRequest(ex);
             }
             catch (Exception ex)
             {

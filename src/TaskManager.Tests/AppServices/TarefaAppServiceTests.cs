@@ -17,6 +17,7 @@ namespace TaskManager.Tests.AppServices
         private readonly Mock<ITarefaService> _tarefaServiceMock;
         private readonly Mock<IProjetoService> _projetoServiceMock;
         private readonly Mock<IHistoricoAlteracaoService> _historicoAlteracaoServiceMock;
+        private readonly Mock<IUsuarioService> _usuarioServiceMock;
         private readonly IMapper _mapper;
         private readonly TarefaAppService _tarefaAppService;
 
@@ -26,6 +27,8 @@ namespace TaskManager.Tests.AppServices
             _tarefaServiceMock = new Mock<ITarefaService>();
             _projetoServiceMock = new Mock<IProjetoService>();
             _historicoAlteracaoServiceMock = new Mock<IHistoricoAlteracaoService>();
+            _usuarioServiceMock = new Mock<IUsuarioService>();
+
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<TarefaCreationDto, Tarefa>();
@@ -40,6 +43,7 @@ namespace TaskManager.Tests.AppServices
                 _tarefaServiceMock.Object,
                 _historicoAlteracaoServiceMock.Object,
                 _projetoServiceMock.Object,
+                _usuarioServiceMock.Object,
                 _mapper);
         }
 

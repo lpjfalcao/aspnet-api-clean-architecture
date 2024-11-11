@@ -43,7 +43,7 @@ Você pode utilizar a interface do Swagger para testar alguns endpoints: http://
 3. **Criação de Projetos** - criar um novo projeto (endpoint: POST /api/projetos)
 4. **Criação de Tarefas** - adicionar uma nova tarefa a um projeto (endpoint: POST /api/projetos/{projetoId}/tarefas)
 5. **Atualização de Tarefas** - atualizar o status ou detalhes de uma tarefa (endpoint: PATCH /api/projetos/{projetoId}/tarefas/{id})
-6. **Remoção de Tarefas** - remover uma tarefa de um projeto (endpoint: GET /api/projetos/{projetoId}/tarefas/{id})
+6. **Remoção de Tarefas** - remover uma tarefa de um projeto (endpoint: DELETE /api/projetos/{projetoId}/tarefas/{id})
 
 Obs.: 
 - Para as rotas de Tarefas que é um entidade dependente de Projetos é necessário informar o Id do projeto e o Id da tarefa quando solicitado.

@@ -127,7 +127,7 @@ namespace TaskManager.Infra.Data.Migrations
                         new
                         {
                             Id = new Guid("80abbca8-664d-4b20-b5de-024705497d4a"),
-                            DataVencimento = new DateTime(2024, 11, 16, 10, 23, 1, 652, DateTimeKind.Local).AddTicks(4734),
+                            DataVencimento = new DateTime(2024, 11, 16, 13, 4, 54, 753, DateTimeKind.Local).AddTicks(3568),
                             Descricao = "Essa é uma tarefa para realizar o cadastro de usuários no sistema",
                             Prioridade = 2,
                             ProjetoId = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
@@ -138,7 +138,7 @@ namespace TaskManager.Infra.Data.Migrations
                         new
                         {
                             Id = new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a"),
-                            DataVencimento = new DateTime(2024, 11, 21, 10, 23, 1, 652, DateTimeKind.Local).AddTicks(4751),
+                            DataVencimento = new DateTime(2024, 11, 21, 13, 4, 54, 753, DateTimeKind.Local).AddTicks(3586),
                             Descricao = "Essa é uma tarefa para criar uma nova sprint para o projeto",
                             Prioridade = 1,
                             ProjetoId = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
@@ -149,18 +149,18 @@ namespace TaskManager.Infra.Data.Migrations
                         new
                         {
                             Id = new Guid("88696b49-5c8c-4927-a0a5-cc756e0df8b9"),
-                            DataVencimento = new DateTime(2024, 11, 21, 10, 23, 1, 652, DateTimeKind.Local).AddTicks(4754),
-                            Descricao = "Essa é uma tarefa para criar uma nova sprint para o projeto",
+                            DataVencimento = new DateTime(2024, 11, 21, 13, 4, 54, 753, DateTimeKind.Local).AddTicks(3591),
+                            Descricao = "Essa é uma tarefa para versionar o código do projeto no GIT",
                             Prioridade = 1,
                             ProjetoId = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
                             Status = 3,
-                            Titulo = "Criar uma nova Sprint para o Projeto",
+                            Titulo = "Versionar o código do projeto no GIT",
                             UsuarioId = new Guid("a69c1158-3c7e-4441-a3da-d060c2b5604c")
                         },
                         new
                         {
                             Id = new Guid("88f32217-dfdf-4929-bf2d-0714d3178afa"),
-                            DataVencimento = new DateTime(2024, 11, 21, 10, 23, 1, 652, DateTimeKind.Local).AddTicks(4756),
+                            DataVencimento = new DateTime(2024, 11, 21, 13, 4, 54, 753, DateTimeKind.Local).AddTicks(3594),
                             Descricao = "Essa é uma tarefa para cadastrar usuários no banco de dados",
                             Prioridade = 1,
                             ProjetoId = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
@@ -171,7 +171,7 @@ namespace TaskManager.Infra.Data.Migrations
                         new
                         {
                             Id = new Guid("a39740f1-2ad5-4a15-95b1-52bcb0530728"),
-                            DataVencimento = new DateTime(2024, 11, 26, 10, 23, 1, 652, DateTimeKind.Local).AddTicks(4759),
+                            DataVencimento = new DateTime(2024, 11, 26, 13, 4, 54, 753, DateTimeKind.Local).AddTicks(3597),
                             Descricao = "Essa é uma tarefa para migrar o banco de dados",
                             Prioridade = 3,
                             ProjetoId = new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"),
@@ -182,12 +182,12 @@ namespace TaskManager.Infra.Data.Migrations
                         new
                         {
                             Id = new Guid("c75e6e5b-d81c-4cbd-b197-650abccc352b"),
-                            DataVencimento = new DateTime(2024, 11, 26, 10, 23, 1, 652, DateTimeKind.Local).AddTicks(4761),
-                            Descricao = "Essa é uma tarefa para migrar o banco de dados",
+                            DataVencimento = new DateTime(2024, 11, 26, 13, 4, 54, 753, DateTimeKind.Local).AddTicks(3600),
+                            Descricao = "Essa é uma tarefa para subir a imagem do Docker para um serviço ECR",
                             Prioridade = 3,
                             ProjetoId = new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"),
                             Status = 2,
-                            Titulo = "Migar o banco de dados SQL Server para o DynamoDB",
+                            Titulo = "Subir a imagem do Docker para um serviço ECR da AWS",
                             UsuarioId = new Guid("0f58ef89-c87e-4c09-a9ad-4cbc2f764aec")
                         });
                 });

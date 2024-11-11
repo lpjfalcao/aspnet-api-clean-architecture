@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TaskManager.Infra.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class ConfiguracaoInicialDaBaseDeDados : Migration
+    public partial class CriacaoInicialDoBancoDeDados : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -113,12 +113,12 @@ namespace TaskManager.Infra.Data.Migrations
                 columns: new[] { "TarefaId", "Comentario", "DataVencimento", "Descricao", "Prioridade", "ProjetoId", "Status", "Titulo", "UsuarioId" },
                 values: new object[,]
                 {
-                    { new Guid("80abbca8-664d-4b20-b5de-024705497d4a"), null, new DateTime(2024, 11, 16, 10, 23, 1, 652, DateTimeKind.Local).AddTicks(4734), "Essa é uma tarefa para realizar o cadastro de usuários no sistema", 2, new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"), 1, "Cadastrar Usuários no Sistema", new Guid("a69c1158-3c7e-4441-a3da-d060c2b5604c") },
-                    { new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a"), null, new DateTime(2024, 11, 21, 10, 23, 1, 652, DateTimeKind.Local).AddTicks(4751), "Essa é uma tarefa para criar uma nova sprint para o projeto", 1, new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"), 3, "Criar uma nova Sprint para o Projeto", new Guid("a69c1158-3c7e-4441-a3da-d060c2b5604c") },
-                    { new Guid("88696b49-5c8c-4927-a0a5-cc756e0df8b9"), null, new DateTime(2024, 11, 21, 10, 23, 1, 652, DateTimeKind.Local).AddTicks(4754), "Essa é uma tarefa para criar uma nova sprint para o projeto", 1, new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"), 3, "Criar uma nova Sprint para o Projeto", new Guid("a69c1158-3c7e-4441-a3da-d060c2b5604c") },
-                    { new Guid("88f32217-dfdf-4929-bf2d-0714d3178afa"), null, new DateTime(2024, 11, 21, 10, 23, 1, 652, DateTimeKind.Local).AddTicks(4756), "Essa é uma tarefa para cadastrar usuários no banco de dados", 1, new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"), 3, "Cadastrar Usuários no banco de dados", new Guid("a69c1158-3c7e-4441-a3da-d060c2b5604c") },
-                    { new Guid("a39740f1-2ad5-4a15-95b1-52bcb0530728"), null, new DateTime(2024, 11, 26, 10, 23, 1, 652, DateTimeKind.Local).AddTicks(4759), "Essa é uma tarefa para migrar o banco de dados", 3, new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"), 2, "Migar o banco de dados SQL Server para o DynamoDB", new Guid("0f58ef89-c87e-4c09-a9ad-4cbc2f764aec") },
-                    { new Guid("c75e6e5b-d81c-4cbd-b197-650abccc352b"), null, new DateTime(2024, 11, 26, 10, 23, 1, 652, DateTimeKind.Local).AddTicks(4761), "Essa é uma tarefa para migrar o banco de dados", 3, new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"), 2, "Migar o banco de dados SQL Server para o DynamoDB", new Guid("0f58ef89-c87e-4c09-a9ad-4cbc2f764aec") }
+                    { new Guid("80abbca8-664d-4b20-b5de-024705497d4a"), null, new DateTime(2024, 11, 16, 13, 4, 54, 753, DateTimeKind.Local).AddTicks(3568), "Essa é uma tarefa para realizar o cadastro de usuários no sistema", 2, new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"), 1, "Cadastrar Usuários no Sistema", new Guid("a69c1158-3c7e-4441-a3da-d060c2b5604c") },
+                    { new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a"), null, new DateTime(2024, 11, 21, 13, 4, 54, 753, DateTimeKind.Local).AddTicks(3586), "Essa é uma tarefa para criar uma nova sprint para o projeto", 1, new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"), 3, "Criar uma nova Sprint para o Projeto", new Guid("a69c1158-3c7e-4441-a3da-d060c2b5604c") },
+                    { new Guid("88696b49-5c8c-4927-a0a5-cc756e0df8b9"), null, new DateTime(2024, 11, 21, 13, 4, 54, 753, DateTimeKind.Local).AddTicks(3591), "Essa é uma tarefa para versionar o código do projeto no GIT", 1, new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"), 3, "Versionar o código do projeto no GIT", new Guid("a69c1158-3c7e-4441-a3da-d060c2b5604c") },
+                    { new Guid("88f32217-dfdf-4929-bf2d-0714d3178afa"), null, new DateTime(2024, 11, 21, 13, 4, 54, 753, DateTimeKind.Local).AddTicks(3594), "Essa é uma tarefa para cadastrar usuários no banco de dados", 1, new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"), 3, "Cadastrar Usuários no banco de dados", new Guid("a69c1158-3c7e-4441-a3da-d060c2b5604c") },
+                    { new Guid("a39740f1-2ad5-4a15-95b1-52bcb0530728"), null, new DateTime(2024, 11, 26, 13, 4, 54, 753, DateTimeKind.Local).AddTicks(3597), "Essa é uma tarefa para migrar o banco de dados", 3, new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"), 2, "Migar o banco de dados SQL Server para o DynamoDB", new Guid("0f58ef89-c87e-4c09-a9ad-4cbc2f764aec") },
+                    { new Guid("c75e6e5b-d81c-4cbd-b197-650abccc352b"), null, new DateTime(2024, 11, 26, 13, 4, 54, 753, DateTimeKind.Local).AddTicks(3600), "Essa é uma tarefa para subir a imagem do Docker para um serviço ECR", 3, new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"), 2, "Subir a imagem do Docker para um serviço ECR da AWS", new Guid("0f58ef89-c87e-4c09-a9ad-4cbc2f764aec") }
                 });
 
             migrationBuilder.CreateIndex(

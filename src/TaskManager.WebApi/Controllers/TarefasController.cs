@@ -61,5 +61,13 @@ namespace TaskManager.WebApi.Controllers
 
             return StatusCode(message.StatusCode, message);
         }
+
+        [HttpGet("relatorio")]
+        public async Task<IActionResult> ObterMediaTarefasConcluidasPorUsuario(Guid usuarioId)
+        {
+            var message = await this.tarefaAppService.ObterMediaTarefasConcluidasPorUsuario(usuarioId);
+
+            return StatusCode(message.StatusCode, message);
+        }
     }   
 }

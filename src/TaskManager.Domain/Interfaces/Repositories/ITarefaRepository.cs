@@ -7,5 +7,6 @@ namespace TaskManager.Domain.Interfaces.Repositories
         void CriarTarefaPorProjeto(Guid projetoId, Tarefa tarefa);
         Task<Tarefa> ObterTarefaPorId(Guid projetoId, Guid id, bool trackChanges);
         void RemoverTarefa(Tarefa tarefa);
+        Task<Dictionary<Guid, double>> ObterMediaTarefasConcluidasPorUsuario(Guid usuarioId);
     }
 }

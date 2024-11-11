@@ -6,5 +6,6 @@ namespace TaskManager.Domain.Interfaces.Services
     {
         void ConfigurarPrioriedade(Tarefa tarefa);
         void ValidarPrioriedade(Tarefa tarefa);
+        Task<Dictionary<Guid, double>> ObterMediaTarefasConcluidasPorUsuario(Guid usuarioId);
     }
 }

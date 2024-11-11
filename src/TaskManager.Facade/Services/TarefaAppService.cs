@@ -124,5 +124,30 @@ namespace TaskManager.Application.Services
 
             return message;
         }
+
+        public async Task<MessageHelper<Dictionary<Guid, double>>> ObterMediaTarefasConcluidasPorUsuario(Guid usuarioId)
+        {
+            var message = new MessageHelper<Dictionary<Guid, double>>();
+
+            try
+            {
+                var dados = await this.tarefaService.ObterMediaTarefasConcluidasPorUsuario(usuarioId);
+
+                if (!dados.Any())
+                {
+                    message.NotFound("Dados não encontrados");
+
+                    return message;
+                }
+
+                message.Ok(dados);
+            }
+            catch(Exception ex)
+            {
+                message.Error(ex);
+            }
+
+            return message;
+        }
     }
 }

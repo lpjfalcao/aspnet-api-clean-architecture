@@ -1,4 +1,5 @@
 ﻿using TaskManager.Domain.Entities;
+using TaskManager.Domain.Enum;
 using TaskManager.Domain.Interfaces.Repositories;
 using TaskManager.Infra.Data.Contextos;
 
@@ -25,6 +26,18 @@ namespace TaskManager.Infra.Data.Repositories
         public void RemoverTarefa(Tarefa tarefa)
         {
             Remove(tarefa);
+        }
+
+        public async Task<Dictionary<Guid, double>> ObterMediaTarefasConcluidasPorUsuario(Guid usuarioId)
+        {
+            var dataLimite = DateTime.UtcNow.AddDays(-30);
+
+            var mediaPorUsuario = this.context.Tarefas
+                .Where(t => t.DataVencimento >= dataLimite && t.Status == TarefaStatusEnum.Concluido)
+                .GroupBy(t => usuarioId)
+                .ToDictionary(g => g.Key, g => g.Count() / (double)30);
+
+            return mediaPorUsuario;
         }
     }
 }

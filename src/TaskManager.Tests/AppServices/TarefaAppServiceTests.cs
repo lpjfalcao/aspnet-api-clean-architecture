@@ -48,7 +48,7 @@ namespace TaskManager.Tests.AppServices
         }
 
         [Fact]
-        public async Task CriarTarefa_QuandoChamado_RetornaMensagemOk()
+        public async Task CriarTarefa_QuandoChamado_RetornaTrue()
         {
             // Arrange
             var projetoId = Guid.NewGuid();
@@ -77,7 +77,7 @@ namespace TaskManager.Tests.AppServices
         }
 
         [Fact]
-        public async Task CriarTarefa_QuandoUsuarioNaoExiste_RetornaMensagemOk()
+        public async Task CriarTarefa_QuandoUsuarioNaoExiste_RetornaFalse()
         {
             // Arrange
             var projetoId = Guid.NewGuid();
@@ -108,7 +108,7 @@ namespace TaskManager.Tests.AppServices
         }
 
         [Fact]
-        public async Task CriarTarefa_QuandoExisteLimiteMaxidoDe20Tarefas_RetornaMensagemOk()
+        public async Task CriarTarefa_QuandoExisteLimiteMaxidoDe20Tarefas_RetornaFalse()
         {
             // Arrange
             var projetoId = Guid.NewGuid();
@@ -140,7 +140,7 @@ namespace TaskManager.Tests.AppServices
 
 
         [Fact]
-        public async Task AtualizarCamposTarefa_QuandoChamado_RetornaMensagemOk()
+        public async Task AtualizarCamposTarefa_QuandoChamado_RetornaTrue()
         {
             // Arrange
             var projetoId = Guid.NewGuid();
@@ -168,7 +168,7 @@ namespace TaskManager.Tests.AppServices
         }
 
         [Fact]
-        public async Task RemoverTarefaPorProjeto_QuandoChamado_RetornaMensagemOk()
+        public async Task RemoverTarefaPorProjeto_QuandoChamado_RetornaTrue()
         {
             // Arrange
             var projetoId = Guid.NewGuid();

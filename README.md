@@ -1,5 +1,7 @@
 # dotnet-api-task-manager
-Projeto de REST API construída com .NET 6, com uso de Padrões de Projetos e Clean Architecture. 
+Projeto de REST API construída com .NET 6, com uso de Padrões de Projetos e Clean Architecture para o processo seletivo da eclipseworks. 
+
+Link do desafio: https://meteor-ocelot-f0d.notion.site/NET-C-5281edbec2e4480d98552e5ca0242c5b
 
 ## Pré-requisitos:
 

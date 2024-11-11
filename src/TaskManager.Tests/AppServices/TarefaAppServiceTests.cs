@@ -8,7 +8,7 @@ using TaskManager.Domain.Interfaces.Repositories;
 using TaskManager.Domain.Interfaces.Services;
 using TaskManager.Infra.Data.DataTransferObjects;
 
-namespace TaskManager.Tests.Unit
+namespace TaskManager.Tests.AppServices
 {
     public class TarefaAppServiceTests
     {
@@ -51,7 +51,7 @@ namespace TaskManager.Tests.Unit
                 Descricao = "teste",
                 Prioridade = "Alta",
                 Status = "Pendente",
-                Titulo = "teste"                
+                Titulo = "teste"
             };
 
             var tarefa = new Tarefa();

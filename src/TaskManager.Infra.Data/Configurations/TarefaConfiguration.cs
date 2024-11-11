@@ -35,9 +35,9 @@ namespace TaskManager.Infra.Data.Configurations
                  new Tarefa
                  {
                      Id = new Guid("88696b49-5c8c-4927-a0a5-cc756e0df8b9"),
-                     Titulo = "Criar uma nova Sprint para o Projeto",
+                     Titulo = "Versionar o código do projeto no GIT",
                      DataVencimento = DateTime.Now.AddDays(10),
-                     Descricao = "Essa é uma tarefa para criar uma nova sprint para o projeto",
+                     Descricao = "Essa é uma tarefa para versionar o código do projeto no GIT",
                      ProjetoId = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
                      Status = TarefaStatusEnum.Concluido,
                      Prioridade = PrioridadeTarefaEnum.Baixa,
@@ -68,9 +68,9 @@ namespace TaskManager.Infra.Data.Configurations
                    new Tarefa
                    {
                        Id = new Guid("c75e6e5b-d81c-4cbd-b197-650abccc352b"),
-                       Titulo = "Migar o banco de dados SQL Server para o DynamoDB",
+                       Titulo = "Subir a imagem do Docker para um serviço ECR da AWS",
                        DataVencimento = DateTime.Now.AddDays(15),
-                       Descricao = "Essa é uma tarefa para migrar o banco de dados",
+                       Descricao = "Essa é uma tarefa para subir a imagem do Docker para um serviço ECR",
                        ProjetoId = new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"),
                        Status = TarefaStatusEnum.Andamento,
                        Prioridade = PrioridadeTarefaEnum.Alta,

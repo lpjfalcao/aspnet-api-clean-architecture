@@ -40,8 +40,8 @@ namespace TaskManager.Domain.Services
                         alteracoes.Add(new HistoricoAlteracao
                         {
                             CampoAlterado = field.Name,
-                            Antes = valorAntigo.ToString(),
-                            Depois = valorNovo.ToString(),
+                            Antes = valorAntigo != null ? valorAntigo.ToString() : string.Empty,
+                            Depois = valorNovo != null ? valorNovo.ToString() : string.Empty,
                             DataAlteracao = DateTime.Now
                         });
                 }

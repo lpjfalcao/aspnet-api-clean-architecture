@@ -45,9 +45,9 @@ Você pode utilizar a interface do Swagger para testar alguns endpoints: http://
 5. **Atualização de Tarefas** - atualizar o status ou detalhes de uma tarefa (endpoint: PATCH /api/projetos/{projetoId}/tarefas/{id})
 6. **Remoção de Tarefas** - remover uma tarefa de um projeto (endpoint: GET /api/projetos/{projetoId}/tarefas/{id})
 
-Para as rotas de Tarefas que é um entidade dependente de Projetos é necessário informar o Id do projeto e o Id da tarefa quando solicitado.
-Para atualização de tarefas temos uma requisição patch que é usada para atualizações parciais do recurso no servidor. 
-Para criar uma tarefa também é necessário informar o id do usuário que estará associado à tarefa e deve ser um id válido de um usuário cadastrado no banco de dados. Abaixo segue alguns ids válidos:
+- Para as rotas de Tarefas que é um entidade dependente de Projetos é necessário informar o Id do projeto e o Id da tarefa quando solicitado.
+- Para atualização de tarefas temos uma requisição patch que é usada para atualizações parciais do recurso no servidor. 
+- Para criar uma tarefa também é necessário informar o id do usuário que estará associado à tarefa e deve ser um id válido de um usuário cadastrado no banco de dados. Abaixo segue alguns ids válidos:
 
 0F58EF89-C87E-4C09-A9AD-4CBC2F764AEC	- id do usuário Jimmy Page
 A69C1158-3C7E-4441-A3DA-D060C2B5604C	id do usuário Jimmy Hendrix

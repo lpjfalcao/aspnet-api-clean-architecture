@@ -4,6 +4,7 @@ using Moq;
 using TaskManager.Application.Services;
 using TaskManager.Domain.Entities;
 using TaskManager.Domain.Enum;
+using TaskManager.Domain.Exceptions;
 using TaskManager.Domain.Interfaces.Repositories;
 using TaskManager.Domain.Interfaces.Services;
 using TaskManager.Infra.Data.DataTransferObjects;
@@ -66,6 +67,37 @@ namespace TaskManager.Tests.AppServices
             // Assert
             Assert.True(result.Success);
         }
+
+        [Fact]
+        public async Task CriarTarefa_QuandoExisteLimiteMaxidoDe20Tarefas_RetornaMensagemOk()
+        {
+            // Arrange
+            var projetoId = Guid.NewGuid();
+            var tarefaDto = new TarefaCreationDto
+            {
+                DataVencimento = DateTime.Now,
+                Descricao = "teste",
+                Prioridade = "Alta",
+                Status = "Pendente",
+                Titulo = "teste"
+            };
+
+            var tarefa = new Tarefa();
+
+            _projetoServiceMock.Setup(x => x.ValidarLimiteMaximoTarefasPorProjeto(projetoId))
+                .Throws(new OperacaoNaoPermitidaException("O limite de tarefas já foi atingida para este projeto"));
+
+            _repositoryManagerMock.Setup(x => x.Tarefa.CriarTarefaPorProjeto(projetoId, It.IsAny<Tarefa>()));
+            _repositoryManagerMock.Setup(x => x.Commit()).Returns(Task.CompletedTask);
+
+            // Act
+            var result = await _tarefaAppService.CriarTarefa(projetoId, tarefaDto);
+
+            // Assert
+            Assert.False(result.Success);
+            Assert.Equal("O limite de tarefas já foi atingida para este projeto", result.Message);
+        }
+
 
         [Fact]
         public async Task AtualizarCamposTarefa_QuandoChamado_RetornaMensagemOk()

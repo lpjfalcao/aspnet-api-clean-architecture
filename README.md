@@ -36,3 +36,19 @@ Obs.: Para a conexão com o banco funcionar é necessário que seu SQL Server es
 
 Você pode utilizar a interface do Swagger para testar alguns endpoints: http://localhost:5000/swagger/index.html
 
+## Fase 2: Refinamento
+
+- Quais informações sobre projeto devem ser armazenadas no sistema? Não ficou claro quais são os dados do projeto.
+- Se não é necessário implementar autenticação/autorização nessa fase por que há uma regra para restringir os relatórios para usuários com função específica de "gerente"? 
+- Sabemos que cada projeto deve ter uma prioridade atribuída, mas caso nenhuma prioridade seja informada qual deve ser definida por padrão? Como isso não foi especificado estamos definindo uma prioridade baixa por padrão caso nenhuma outra seja informada.
+- Não ficou claro se na listagem de projetos devemos listar todos os projetos do sistema ou projetos de um usuário específico. Na modelagem atual e como foi sugerida pelos requisitos, o projeto não está associado a um usuário, mas sim a uma tarefa. Você acha interessante modelarmos o sistema de uma forma que o projeto esteja associado a um usuário ao invés de uma tarefa?
+- Além da restrição de uso do relatório existe alguma outra restrição do que o usuário pode ou não fazer no sistema? Que tipos de usuário é esperado que tenhamos no sistema?
+- Qual é o número de usuários esperado para usar o sistema?
+
+ ## Fase 3: Final
+
+Como sugestão de melhoria para o projeto atual, precisava entender se o sistema irá crescer do ponto de vista de complexidade do negócio e de modelagem de dados. Caso o sistema se torne maior e mais complexo ao invés de adotar uma arquitetura monolítica poderíamos utilizar uma abordagem de microsserviços, onde teríamos o sistema segregado em diferentes serviços menores, cada um representando uma função isolada do negócio e que poderia ser publicada de forma independente, tornando mais fácil de escalar no futuro para atender as necessidades dos usuários. Isso também se aplicaria para a base de dados, onde cada serviço teria uma base de dados dedicada para seu uso pessoal e teríamos a flexibilidade para variar as tecnologias e selecionar as que mais se encaixem na nossa necessidade. 
+
+Também seria interessante no futuro caso a complexidade do sistema aumente fazer o uso de uma solução de orquestração de container como o Amazon ECS ou Amazon EKS para gerenciar os microsserviços.  
+  
+

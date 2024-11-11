@@ -6,7 +6,7 @@ namespace TaskManager.Application.Interfaces
 {
     public interface ITarefaAppService
     {
-        Task<MessageHelper<TarefaDto>> CriarTarefa(Guid projetoId, TarefaCreationDto tarefaDto);
+        Task<MessageHelper<TarefaDto>> CriarTarefa(Guid projetoId, Guid usuarioId, TarefaCreationDto tarefaDto);
         Task<MessageHelper> AtualizarCamposTarefa(Guid projetoId, Guid id, JsonPatchDocument<TarefaDto> patchDoc);
         Task<MessageHelper> RemoverTarefaPorProjeto(Guid projetoId, Guid id);
         Task<MessageHelper<Dictionary<Guid, double>>> ObterMediaTarefasConcluidasPorUsuario(Guid usuarioId);

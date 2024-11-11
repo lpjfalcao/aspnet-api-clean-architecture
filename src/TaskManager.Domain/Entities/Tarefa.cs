@@ -12,6 +12,7 @@ namespace TaskManager.Domain.Entities
         public DateTime DataVencimento { get; set; }
         public TarefaStatusEnum Status { get; set; }
         public PrioridadeTarefaEnum? Prioridade { get; set; }
+        public string? Comentario { get; set; }
 
         public Guid ProjetoId { get; set; }
         public Projeto Projeto { get; set; }

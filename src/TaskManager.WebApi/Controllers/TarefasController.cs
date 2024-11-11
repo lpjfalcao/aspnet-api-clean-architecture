@@ -40,7 +40,7 @@ namespace TaskManager.WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> CriarTarefaPorProjeto(Guid projetoId, TarefaCreationDto tarefaDto)
         {
-            var message = await this.tarefaAppService.CriarTarefa(projetoId, tarefaDto);
+            var message = await this.tarefaAppService.CriarTarefa(projetoId, tarefaDto.UsuarioId, tarefaDto);
 
             return CreatedAtRoute("ObterTarefasPorId", new { Id = message.Data.Id, ProjetoId = projetoId  }, message.Data);
 

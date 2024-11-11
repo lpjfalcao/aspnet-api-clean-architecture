@@ -12,9 +12,10 @@ namespace TaskManager.Infra.Data.Repositories
             
         }
 
-        public void CriarTarefaPorProjeto(Guid projetoId, Tarefa tarefa)
+        public void CriarTarefaPorProjeto(Guid projetoId, Guid usuarioId, Tarefa tarefa)
         {
             tarefa.ProjetoId = projetoId;
+            tarefa.UsuarioId = usuarioId;
             Create(tarefa);
         }
 

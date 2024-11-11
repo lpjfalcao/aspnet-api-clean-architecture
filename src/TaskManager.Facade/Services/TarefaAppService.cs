@@ -30,7 +30,7 @@ namespace TaskManager.Application.Services
             this.mapper = mapper;
         }
 
-        public async Task<MessageHelper<TarefaDto>> CriarTarefa(Guid projetoId, TarefaCreationDto tarefaDto)
+        public async Task<MessageHelper<TarefaDto>> CriarTarefa(Guid projetoId, Guid usuarioId, TarefaCreationDto tarefaDto)
         {
             var message = new MessageHelper<TarefaDto>();
 
@@ -42,7 +42,7 @@ namespace TaskManager.Application.Services
 
                 await this.projetoService.ValidarLimiteMaximoTarefasPorProjeto(projetoId);
 
-                this.repositoryManager.Tarefa.CriarTarefaPorProjeto(projetoId, tarefa);
+                this.repositoryManager.Tarefa.CriarTarefaPorProjeto(projetoId, usuarioId, tarefa);
 
                 await this.repositoryManager.Commit();
 

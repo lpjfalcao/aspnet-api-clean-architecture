@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TaskManager.Infra.Data.DataTransferObjects
+﻿namespace TaskManager.Infra.Data.DataTransferObjects
 {
     public class TarefaDto
     {
@@ -14,6 +8,7 @@ namespace TaskManager.Infra.Data.DataTransferObjects
         public DateTime DataVencimento { get; set; }
         public string Status { get; set; }
         public string Prioridade { get; set; }
+        public string? Comentario { get; set; }
 
         public Guid ProjetoId { get; set; }
     }

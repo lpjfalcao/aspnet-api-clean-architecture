@@ -46,6 +46,7 @@ namespace TaskManager.Tests.AppServices
         {
             // Arrange
             var projetoId = Guid.NewGuid();
+            var usuarioId = Guid.NewGuid();
             var tarefaDto = new TarefaCreationDto
             {
                 DataVencimento = DateTime.Now,
@@ -58,11 +59,11 @@ namespace TaskManager.Tests.AppServices
             var tarefa = new Tarefa();
 
             _projetoServiceMock.Setup(x => x.ValidarLimiteMaximoTarefasPorProjeto(projetoId)).Returns(Task.CompletedTask);
-            _repositoryManagerMock.Setup(x => x.Tarefa.CriarTarefaPorProjeto(projetoId, It.IsAny<Tarefa>()));
+            _repositoryManagerMock.Setup(x => x.Tarefa.CriarTarefaPorProjeto(projetoId, usuarioId, It.IsAny<Tarefa>()));
             _repositoryManagerMock.Setup(x => x.Commit()).Returns(Task.CompletedTask);
 
             // Act
-            var result = await _tarefaAppService.CriarTarefa(projetoId, tarefaDto);
+            var result = await _tarefaAppService.CriarTarefa(projetoId, usuarioId, tarefaDto);
 
             // Assert
             Assert.True(result.Success);
@@ -73,6 +74,7 @@ namespace TaskManager.Tests.AppServices
         {
             // Arrange
             var projetoId = Guid.NewGuid();
+            var usuarioId = Guid.NewGuid();
             var tarefaDto = new TarefaCreationDto
             {
                 DataVencimento = DateTime.Now,
@@ -87,11 +89,11 @@ namespace TaskManager.Tests.AppServices
             _projetoServiceMock.Setup(x => x.ValidarLimiteMaximoTarefasPorProjeto(projetoId))
                 .Throws(new OperacaoNaoPermitidaException("O limite de tarefas já foi atingida para este projeto"));
 
-            _repositoryManagerMock.Setup(x => x.Tarefa.CriarTarefaPorProjeto(projetoId, It.IsAny<Tarefa>()));
+            _repositoryManagerMock.Setup(x => x.Tarefa.CriarTarefaPorProjeto(projetoId, usuarioId, It.IsAny<Tarefa>()));
             _repositoryManagerMock.Setup(x => x.Commit()).Returns(Task.CompletedTask);
 
             // Act
-            var result = await _tarefaAppService.CriarTarefa(projetoId, tarefaDto);
+            var result = await _tarefaAppService.CriarTarefa(projetoId, usuarioId, tarefaDto);
 
             // Assert
             Assert.False(result.Success);

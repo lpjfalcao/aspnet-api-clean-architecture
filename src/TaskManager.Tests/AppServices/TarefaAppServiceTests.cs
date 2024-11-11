@@ -65,6 +65,7 @@ namespace TaskManager.Tests.AppServices
             var tarefa = new Tarefa();
 
             _projetoServiceMock.Setup(x => x.ValidarLimiteMaximoTarefasPorProjeto(projetoId)).Returns(Task.CompletedTask);
+            _usuarioServiceMock.Setup(x => x.ValidarSeUsuarioExiste(usuarioId)).ReturnsAsync(true);
             _repositoryManagerMock.Setup(x => x.Tarefa.CriarTarefaPorProjeto(projetoId, usuarioId, It.IsAny<Tarefa>()));
             _repositoryManagerMock.Setup(x => x.Commit()).Returns(Task.CompletedTask);
 
@@ -73,6 +74,37 @@ namespace TaskManager.Tests.AppServices
 
             // Assert
             Assert.True(result.Success);
+        }
+
+        [Fact]
+        public async Task CriarTarefa_QuandoUsuarioNaoExiste_RetornaMensagemOk()
+        {
+            // Arrange
+            var projetoId = Guid.NewGuid();
+            var usuarioId = Guid.NewGuid();
+            var tarefaDto = new TarefaCreationDto
+            {
+                DataVencimento = DateTime.Now,
+                Descricao = "teste",
+                Prioridade = PrioridadeTarefaEnum.Alta,
+                Status = TarefaStatusEnum.Pendente,
+                Titulo = "teste"
+            };
+
+            var tarefa = new Tarefa();
+
+            _projetoServiceMock.Setup(x => x.ValidarLimiteMaximoTarefasPorProjeto(projetoId)).Returns(Task.CompletedTask);
+            _usuarioServiceMock.Setup(x => x.ValidarSeUsuarioExiste(usuarioId))
+                .Throws(new OperacaoNaoPermitidaException($"O usuário informado não está cadastrado no sistema: {usuarioId}"));
+
+            _repositoryManagerMock.Setup(x => x.Tarefa.CriarTarefaPorProjeto(projetoId, usuarioId, It.IsAny<Tarefa>()));
+            _repositoryManagerMock.Setup(x => x.Commit()).Returns(Task.CompletedTask);
+
+            // Act
+            var result = await _tarefaAppService.CriarTarefa(projetoId, usuarioId, tarefaDto);
+
+            // Assert
+            Assert.False(result.Success);
         }
 
         [Fact]

@@ -11,6 +11,7 @@ Antes de executar o projeto certifique-se de ter as configurações abaixo insta
 + Visual Studio 2022
 + SQL Server rodando localmente no seu ambiente
 + Docker
++ GIT
 
 ## Rodando o projeto:
 

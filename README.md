@@ -6,8 +6,6 @@ Para o desenvolvimento dos endpoints foi utilizado um cenário de gerenciamento 
 
 Na raiz do projeto existe um Dockerfile usado para dockerizar a aplicação e permitir que ela seja executada em um container do Docker. Abaixo seguem as instruções para configurar o ambiente e executar o projeto em sua máquina local.
 
-Link do desafio: https://meteor-ocelot-f0d.notion.site/NET-C-5281edbec2e4480d98552e5ca0242c5b
-
 ## Pré-requisitos:
 
 Antes de executar o projeto certifique-se de ter as configurações abaixo instaladas no seu ambiente.

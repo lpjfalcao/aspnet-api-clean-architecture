@@ -27,6 +27,8 @@ Siga os passos abaixo para rodar o projeto.
 5. Rode o comando **docker run --name task-manager-api -d -p 5000:80 -e ASPNETCORE_ENVIRONMENT=Development task-manager** para executar a imagem em um container 
 6. Abra o navegador e acesse a documentação da API para ver se ela está online em http://localhost:5000/swagger/index.html
 
+Obs.: Caso queira executar o projeto pelo Visual Studio ao invés de em um container abra a solução TaskManager.sln no Visual Studio e aperte a tecla F5 para levantar a API.
+
 ## Configurando o ambiente:
 
 O projeto usa o Entity Framework Core como solução de ORM para manipular e acessar dados. Siga os passos abaixo para criar o banco de dados:

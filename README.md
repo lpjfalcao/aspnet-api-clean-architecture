@@ -1,6 +1,6 @@
 # aspnet-api-task-manager
 
-Este repositório contém um projeto de Web API Restful desenvolvida com o framework ASP .NET e está estruturado em camadas com uma arquitetura Clean, onde é feito o uso de Padrões de Projeto, como Unit of Work, Facade, Repository e Injeção de Dependência, para uma boa organização do código. 
+Este repositório contém um projeto de Web API Restful desenvolvida com o framework ASP .NET e está estruturado em camadas com uma arquitetura Clean, onde é feito o uso de Padrões de Projeto, como Unit of Work, Facade, Factory, Repository e Injeção de Dependência, para uma boa organização do código. 
 
 Para o desenvolvimento dos endpoints foi utilizado um cenário de gerenciamento de tarefas em que há os recursos Projetos e Tarefas que são expostos pela API com operações de cadastro, atualização, exclusão e consulta. 
 

@@ -20,7 +20,7 @@ Antes de executar o projeto certifique-se de ter as configurações abaixo insta
 
 Siga os passos abaixo para rodar o projeto.
 
-1. Abra o terminal do sistema operacional e clone este repositório utilizando o GIT com o comando **git clone** https://github.com/lpjfalcao/dotnet-api-task-manager.git
+1. Abra o terminal do sistema operacional e clone este repositório utilizando o GIT com o comando **git clone** https://github.com/lpjfalcao/aspnet-api-task-manager.git
 2. Abra os arquivos appsettings.json e appsettings.development.json que estão na pasta src/TaskManager.WebApi do projeto clonado e configure o seu usuário e senha do SQL Server na string de conexão.
 3. Navegue no terminal até a pasta src do projeto clonado
 4. Rode o comando **docker build -t task-manager .** para construir a imagem do Docker

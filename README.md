@@ -1,5 +1,10 @@
-# dotnet-api-task-manager
-Projeto de REST API construída com .NET 6, com uso de Padrões de Projetos e Clean Architecture para o processo seletivo da eclipseworks. 
+# aspnet-api-task-manager
+
+Este repositório contém um projeto de Web API Restful desenvolvida com o framework ASP .NET e está estruturado em camadas com uma arquitetura Clean, onde é feito o uso de Padrões de Projeto, como Unit of Work, Facade, Repository e Injeção de Dependência, para uma boa organização do código. 
+
+Para o desenvolvimento dos endpoints foi utilizado um cenário de gerenciamento de tarefas em que há os recursos Projetos e Tarefas que são expostos pela API com operações de cadastro, atualização, exclusão e consulta. 
+
+Na raiz do projeto existe um Dockerfile usado para dockerizar a aplicação e permitir que ela seja executada em um container do Docker. Abaixo seguem as instruções para configurar o ambiente e executar o projeto em sua máquina local.
 
 Link do desafio: https://meteor-ocelot-f0d.notion.site/NET-C-5281edbec2e4480d98552e5ca0242c5b
 

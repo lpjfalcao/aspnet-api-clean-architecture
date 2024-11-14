@@ -42,21 +42,15 @@ Obs.: Para a conexão com o banco funcionar é necessário que seu SQL Server es
 
 Você pode utilizar a interface do Swagger para testar alguns endpoints: http://localhost:5000/swagger/index.html
 
-1. **Listagem de Projetos** - listar todos os projetos do usuário (endpoint: GET /api/projetos)
-2. **Visualização de Tarefas** - visualizar todas as tarefas de um projeto específico (endpoint: GET /api/projetos/{projetoId}/tarefas)
-3. **Criação de Projetos** - criar um novo projeto (endpoint: POST /api/projetos)
-4. **Criação de Tarefas** - adicionar uma nova tarefa a um projeto (endpoint: POST /api/projetos/{projetoId}/tarefas)
-5. **Atualização de Tarefas** - atualizar o status ou detalhes de uma tarefa (endpoint: PATCH /api/projetos/{projetoId}/tarefas/{id})
-6. **Remoção de Tarefas** - remover uma tarefa de um projeto (endpoint: DELETE /api/projetos/{projetoId}/tarefas/{id})
+1. **Listagem de Projetos** - endpoint: GET /api/projetos
+2. **Visualização de Tarefas** - endpoint: GET /api/projetos/{projetoId}/tarefas
+3. **Criação de Projetos** - endpoint: POST /api/projetos
+4. **Criação de Tarefas** - endpoint: POST /api/projetos/{projetoId}/tarefas
+5. **Atualização de Tarefas** - endpoint: PATCH /api/projetos/{projetoId}/tarefas/{id}
+6. **Remoção de Tarefas** - endpoint: DELETE /api/projetos/{projetoId}/tarefas/{id}
 
 Obs.: 
-- Para as rotas de Tarefas que é um entidade dependente de Projetos é necessário informar o Id do projeto e o Id da tarefa quando solicitado.
-- Para atualização de Tarefas temos uma requisição patch que é usada para atualizações parciais do recurso no servidor. 
-- Para criar uma Tarefa também é necessário informar o id do usuário que estará associado à Tarefa e deve ser um id válido de um usuário cadastrado no banco de dados.
-
-Abaixo segue alguns ids válidos:
-- 0F58EF89-C87E-4C09-A9AD-4CBC2F764AEC	- id do usuário Jimmy Page
-- A69C1158-3C7E-4441-A3DA-D060C2B5604C	- id do usuário Jimmy Hendrix
+Existem outros endpoints além dos citados acima que você pode explorar na interface do Swagger.
 
 ## Fase 2: Refinamento
 

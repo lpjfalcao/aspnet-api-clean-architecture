@@ -10,7 +10,7 @@ Na raiz do projeto existe um Dockerfile usado para dockerizar a aplicação e pe
 
 Antes de executar o projeto certifique-se de ter as configurações abaixo instaladas no seu ambiente.
 
-+ .NET SDK 6
++ .NET SDK 6 ou superior
 + Visual Studio 2022
 + SQL Server rodando localmente no seu ambiente
 + Docker
